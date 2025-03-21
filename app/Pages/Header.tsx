@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react';
 
-import { Stack, IconButton, Paper, InputBase, colors } from '@mui/material';
+import { useTheme, Stack, IconButton, Paper, InputBase, colors } from '@mui/material';
 
 import SearchIcon from '@mui/icons-material/Search';
 
@@ -8,16 +8,19 @@ import { SiGoogle } from '@icons-pack/react-simple-icons';
 import { SiBaidu } from '@icons-pack/react-simple-icons';
 
 export default function Header() {
+
+    const theme = useTheme();
+
     const [searchEngine, setSearchEngine] = useState('google');
     const [query, setQuery] = useState('');
 
     const changeEngine = () => setSearchEngine(searchEngine === 'google' ? 'baidu' : 'google');
 
-    const setKeyword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const setKeyword = (e: ChangeEvent<HTMLInputElement>) => {
         suggest(e.target.value);
     };
 
-    const handleKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const handleKey = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
             handleSearch();
             e.preventDefault();
@@ -49,9 +52,13 @@ export default function Header() {
     };
 
     useEffect(() => {
-        setInterval(() => {
-            (document.querySelector('#searchInput') as HTMLInputElement)?.focus();
+        const searchInput = document.querySelector('#searchInput') as HTMLInputElement;
+        const foucsInterval = setInterval(() => {
+            if (document.activeElement !== searchInput) {
+                searchInput?.focus();
+            }
         }, 1000);
+        return () => clearInterval(foucsInterval);
     }, []);
 
     return (
@@ -61,9 +68,9 @@ export default function Header() {
             alignItems="center"
             sx={{
                 padding: 2,
-                width: '65vw',
-                '@media (max-width: 768px)': {
-                    width: '90vw',
+                width: '95vw',
+                [theme.breakpoints.up('sm')]: {
+                    width: '65vw',
                 },
             }}
         >
@@ -73,7 +80,7 @@ export default function Header() {
                     alignItems: 'center',
                     width: '100%',
                     backgroundColor: colors.grey[800],
-                    borderRadius: 5,
+                    borderRadius: theme.shape.borderRadius * 4,
                 }}
             >
                 <IconButton
