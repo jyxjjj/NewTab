@@ -77,10 +77,13 @@ export default function Header() {
             <Paper
                 sx={{
                     display: 'flex',
-                    alignItems: 'center',
                     width: '100%',
                     backgroundColor: colors.grey[800],
+                    boxShadow: theme.shadows[4],
                     borderRadius: theme.shape.borderRadius * 4,
+                    '&:hover': {
+                        boxShadow: theme.shadows[16],
+                    },
                 }}
             >
                 <IconButton

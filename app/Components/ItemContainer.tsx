@@ -34,7 +34,7 @@ export default function ItemContainer(
                 cursor: 'pointer',
                 textDecoration: 'none',
                 '&:hover': {
-                    boxShadow: theme.shadows[4],
+                    boxShadow: theme.shadows[16],
                     backgroundColor: theme.palette.grey[800],
                 },
             }}
