@@ -23,6 +23,8 @@ export default function ItemContainer(
             direction='column'
             alignItems='center'
             justifyContent='center'
+            borderRadius={theme.shape.borderRadius}
+            color='inherit'
             {...props}
             sx={{
                 height: 96,
@@ -31,8 +33,6 @@ export default function ItemContainer(
                 minWidth: 96,
                 cursor: 'pointer',
                 textDecoration: 'none',
-                color: 'inherit',
-                borderRadius: theme.shape.borderRadius,
                 '&:hover': {
                     boxShadow: theme.shadows[4],
                     backgroundColor: theme.palette.grey[800],

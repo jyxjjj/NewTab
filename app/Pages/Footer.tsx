@@ -5,11 +5,12 @@ import { Typography } from '@mui/material';
 export default function Footer() {
     return (
         <Stack
+            marginTop='10%'
+            padding={4}
             component='footer'
             direction='column'
-            sx={{
-                alignItems: 'center',
-            }}>
+            alignItems='center'
+        >
             <Stack
                 direction='row'
                 spacing={1}

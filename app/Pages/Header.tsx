@@ -63,11 +63,11 @@ export default function Header() {
 
     return (
         <Stack
+            padding={2}
             component="header"
             direction="row"
             alignItems="center"
             sx={{
-                padding: 2,
                 width: '95vw',
                 [theme.breakpoints.up('sm')]: {
                     width: '65vw',
