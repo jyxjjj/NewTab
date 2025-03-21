@@ -1,4 +1,4 @@
-import { Grid2 as Grid, Typography } from '@mui/material';
+import { useTheme, Stack } from '@mui/material';
 
 import DnsIcon from '@mui/icons-material/Dns';
 import FolderIcon from '@mui/icons-material/Folder';
@@ -8,81 +8,65 @@ import { SiBaidu, SiGoogle, SiCloudflare, SiGithub, SiGooglechrome, SiGoogletran
 
 import ItemContainer from '../Components/ItemContainer';
 import ItemIcon from '../Components/ItemIcon';
+import ItemTitle from '../Components/ItemTitle';
 
 const groups = [
     [
-        { text: 'Google', icon: SiGoogle, link: 'https://www.google.com/ncr' },
-        { text: 'Baidu', icon: SiBaidu, link: 'https://www.baidu.com' },
-        { text: 'Translate', icon: SiGoogletranslate, link: 'https://translate.google.com' },
-        { text: 'WebStore', icon: SiGooglechrome, link: 'https://chromewebstore.google.com' },
+        { text: 'Google', icon: <SiGoogle />, link: 'https://www.google.com/ncr' },
+        { text: 'Baidu', icon: <SiBaidu />, link: 'https://www.baidu.com' },
+        { text: 'Translate', icon: <SiGoogletranslate />, link: 'https://translate.google.com' },
+        { text: 'WebStore', icon: <SiGooglechrome />, link: 'https://chromewebstore.google.com' },
     ],
     [
-        { text: 'Cloudflare', icon: SiCloudflare, link: 'https://www.cloudflare.com' },
-        { text: 'Digital Ocean', icon: SiDigitalocean, link: 'https://www.digitalocean.com' },
-        { text: 'AliYun', icon: SiAlibabacloud, link: 'https://www.aliyun.com' },
-        { text: 'GitHub', icon: SiGithub, link: 'https://github.com' },
+        { text: 'Cloudflare', icon: <SiCloudflare />, link: 'https://www.cloudflare.com' },
+        { text: 'Digital Ocean', icon: <SiDigitalocean />, link: 'https://www.digitalocean.com' },
+        { text: 'AliYun', icon: <SiAlibabacloud />, link: 'https://www.aliyun.com' },
+        { text: 'GitHub', icon: <SiGithub />, link: 'https://github.com' },
     ],
     [
         { text: 'DESMG', icon: null, link: 'https://www.desmg.com' },
-        { text: 'SDWAN', icon: LanIcon, link: 'https://zt.desmg.com' },
-        { text: 'DNS', icon: DnsIcon, link: 'https://dns.desmg.com' },
-        { text: 'Blog', icon: SiWordpress, link: 'https://blog.desmg.com' },
-        { text: 'Files', icon: FolderIcon, link: 'https://local.desmg.com/files/' },
+        { text: 'SDWAN', icon: <LanIcon />, link: 'https://zt.desmg.com' },
+        { text: 'DNS', icon: <DnsIcon />, link: 'https://dns.desmg.com' },
+        { text: 'Blog', icon: <SiWordpress />, link: 'https://blog.desmg.com' },
+        { text: 'Files', icon: <FolderIcon />, link: 'https://local.desmg.com/files/' },
     ]
 ];
 
 export default function Main() {
+
+    const theme = useTheme();
+
     return (
-        <>
+        <Stack
+            component='main'
+            sx={{
+                userSelect: 'none',
+                [theme.breakpoints.up('sm')]: {
+                    width: '65vw',
+                },
+            }}
+        >
             {
-                groups.map((items, i) => (
-                    <Grid
-                        key={i}
-                        component='main'
-                        container
+                groups.map((items, index1) => (
+                    <Stack
+                        key={index1}
                         spacing={1}
-                        sx={{
-                            userSelect: 'none',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            width: '65vw',
-                            '@media (max-width: 768px)': {
-                                width: '90vw',
-                            },
-                        }}
+                        direction='row'
+                        flexWrap='wrap'
+                        alignItems='center'
+                        justifyContent='center'
                     >
-                        {items.map((item, index) => (
-                            <ItemContainer key={index} href={item.link}>
-                                <ItemIcon elevation={3}>
-                                    {item.icon === null
-                                        ? <img
-                                            src={`${item.link}/favicon.ico`}
-                                            alt={item.text}
-                                            referrerPolicy="no-referrer"
-                                            style={{
-                                                width: 24,
-                                                height: 24,
-                                                filter: 'grayscale(100%)',
-                                            }}
-                                        />
-                                        : <item.icon />}
-                                </ItemIcon>
-                                <Typography
-                                    variant='body2'
-                                    sx={{
-                                        whiteSpace: 'nowrap',
-                                        overflow: 'hidden',
-                                        textOverflow: 'ellipsis',
-                                        maxWidth: '75%',
-                                        marginTop: 1,
-                                    }}>
-                                    {item.text}
-                                </Typography>
-                            </ItemContainer>
-                        ))}
-                    </Grid>
+                        {
+                            items.map((item, index2) => (
+                                <ItemContainer key={index2} href={item.link}>
+                                    <ItemIcon elevation={3} icon={item.icon} link={item.link} />
+                                    <ItemTitle text={item.text} />
+                                </ItemContainer>
+                            ))
+                        }
+                    </Stack>
                 ))
             }
-        </>
+        </Stack>
     );
 }

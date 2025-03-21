@@ -4,10 +4,12 @@ import { useTheme, Paper, PaperProps } from '@mui/material';
 
 export default function ItemIcon(
     {
-        children,
+        icon,
+        link,
         ...props
     }: {
-        children: ReactNode;
+        icon: ReactNode;
+        link: string;
     } & PaperProps
 ) {
     const theme = useTheme();
@@ -25,7 +27,17 @@ export default function ItemIcon(
                 borderRadius: theme.shape.borderRadius * 16,
             }}
         >
-            {children}
+            {
+                icon ?? <img
+                    src={`${link}/favicon.ico`}
+                    referrerPolicy="no-referrer"
+                    style={{
+                        width: 24,
+                        height: 24,
+                        filter: 'grayscale(100%)',
+                    }}
+                />
+            }
         </Paper>
     );
 }

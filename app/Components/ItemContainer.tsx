@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { useTheme, Grid2 as Grid, Grid2Props } from '@mui/material';
+import { useTheme, Stack, StackProps } from '@mui/material';
 
 export default function ItemContainer(
     {
@@ -10,26 +10,25 @@ export default function ItemContainer(
     }: {
         href: string;
         children: ReactNode;
-    } & Grid2Props
+    } & StackProps
 ) {
+
     const theme = useTheme();
+
     return (
-        <Grid
+        <Stack
             component='a'
             href={href}
             rel='noopener noreferrer'
-            size={{ xs: 3, sm: 3, md: 2, lg: 1 }}
+            direction='column'
+            alignItems='center'
+            justifyContent='center'
             {...props}
             sx={{
-                padding: theme.spacing(1),
                 height: 96,
                 width: 96,
                 minHeight: 96,
                 minWidth: 96,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
                 cursor: 'pointer',
                 textDecoration: 'none',
                 color: 'inherit',
@@ -41,6 +40,6 @@ export default function ItemContainer(
             }}
         >
             {children}
-        </Grid>
+        </Stack>
     );
 }
