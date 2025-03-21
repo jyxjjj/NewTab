@@ -4,16 +4,21 @@ import { useTheme, Grid2 as Grid, Grid2Props } from '@mui/material';
 
 export default function ItemContainer(
     {
+        href,
         children,
         ...props
     }: {
+        href: string;
         children: ReactNode;
     } & Grid2Props
 ) {
     const theme = useTheme();
     return (
         <Grid
-            size={{ xs: 4, sm: 3, md: 2, lg: 1 }}
+            component='a'
+            href={href}
+            rel='noopener noreferrer'
+            size={{ xs: 3, sm: 3, md: 2, lg: 1 }}
             {...props}
             sx={{
                 padding: theme.spacing(1),
@@ -26,6 +31,9 @@ export default function ItemContainer(
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: 'pointer',
+                textDecoration: 'none',
+                color: 'inherit',
+                borderRadius: theme.shape.borderRadius,
                 '&:hover': {
                     boxShadow: theme.shadows[4],
                     backgroundColor: theme.palette.grey[800],

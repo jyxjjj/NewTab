@@ -52,13 +52,8 @@ export default function Main() {
                         }}
                     >
                         {items.map((item, index) => (
-                            <ItemContainer
-                                key={index}
-                                onClick={() => window.open(item.link, '_self', 'noopener, noreferrer')}
-                            >
-                                <ItemIcon
-                                    elevation={3}
-                                >
+                            <ItemContainer key={index} href={item.link}>
+                                <ItemIcon elevation={3}>
                                     {item.icon === null
                                         ? <img
                                             src={`${item.link}/favicon.ico`}
