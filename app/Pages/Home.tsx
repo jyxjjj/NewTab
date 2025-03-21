@@ -8,9 +8,9 @@ export default function Home() {
     return (
         <Stack
             sx={{
-                justifyContent: 'space-evenly',
                 alignItems: 'center',
-                minHeight: '100%',
+                justifyContent: 'center',
+                minHeight: '100vh',
             }}>
             <Header />
             <Main />
