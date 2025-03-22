@@ -1,6 +1,6 @@
 import { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react';
 
-import { useTheme, Stack, IconButton, Paper, InputBase, colors } from '@mui/material';
+import { useTheme, Stack, IconButton, Paper, InputBase } from '@mui/material';
 
 import SearchIcon from '@mui/icons-material/Search';
 
@@ -78,11 +78,13 @@ export default function Header() {
                 sx={{
                     display: 'flex',
                     width: '100%',
-                    backgroundColor: colors.grey[800],
                     boxShadow: theme.shadows[4],
                     borderRadius: theme.shape.borderRadius * 4,
                     '&:hover': {
                         boxShadow: theme.shadows[16],
+                    },
+                    '@media(prefers-color-scheme: dark)': {
+                        backgroundColor: theme.palette.grey[800],
                     },
                 }}
             >

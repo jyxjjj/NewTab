@@ -35,7 +35,9 @@ export default function ItemContainer(
                 textDecoration: 'none',
                 '&:hover': {
                     boxShadow: theme.shadows[16],
-                    backgroundColor: theme.palette.grey[800],
+                    '@media(prefers-color-scheme: dark)': {
+                        backgroundColor: theme.palette.grey[800],
+                    }
                 },
             }}
         >
