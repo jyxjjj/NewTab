@@ -10,7 +10,7 @@ export default function Home() {
             sx={{
                 alignItems: 'center',
                 justifyContent: 'center',
-                minHeight: '100vh',
+                minHeight: '100%',
             }}>
             <Header />
             <Main />

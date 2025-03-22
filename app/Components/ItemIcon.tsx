@@ -23,8 +23,10 @@ export default function ItemIcon(
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                backgroundColor: theme.palette.grey[800],
                 borderRadius: theme.shape.borderRadius * 16,
+                '@media(prefers-color-scheme: dark)': {
+                    backgroundColor: theme.palette.grey[800],
+                },
             }}
         >
             {

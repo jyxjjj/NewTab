@@ -1,28 +1,48 @@
 import { createTheme } from '@mui/material/styles';
 import { colors } from '@mui/material';
 
+const palette = {
+    primary: {
+        main: colors.blue[500]
+    },
+    secondary: {
+        main: colors.blue[500]
+    },
+    success: {
+        main: colors.green[500]
+    },
+    info: {
+        main: colors.cyan[500]
+    },
+    warning: {
+        main: colors.orange[500]
+    },
+    error: {
+        main: colors.red[500]
+    },
+};
+
 const theme = createTheme({
-    cssVariables: true,
-    palette: {
-        mode: 'dark',
-        primary: {
-            main: colors.blue[500]
+    cssVariables: {
+        colorSchemeSelector: 'class',
+        cssVarPrefix: 'theme',
+    },
+    colorSchemes: {
+        light: {
+            palette: {
+                mode: 'light',
+                background: {
+                    default: colors.grey[300],
+                },
+                ...palette
+            }
         },
-        secondary: {
-            main: colors.blue[500]
-        },
-        success: {
-            main: colors.green[500]
-        },
-        info: {
-            main: colors.cyan[500]
-        },
-        warning: {
-            main: colors.orange[500]
-        },
-        error: {
-            main: colors.red[500]
-        },
+        dark: {
+            palette: {
+                mode: 'dark',
+                ...palette
+            }
+        }
     },
     typography: {
         fontFamily: [
