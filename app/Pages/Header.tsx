@@ -75,18 +75,20 @@ export default function Header() {
             }}
         >
             <Paper
-                sx={{
-                    display: 'flex',
-                    width: '100%',
-                    boxShadow: theme.shadows[4],
-                    borderRadius: theme.shape.borderRadius * 4,
-                    '&:hover': {
-                        boxShadow: theme.shadows[16],
-                    },
-                    '@media(prefers-color-scheme: dark)': {
+                sx={[
+                    theme => ({
+                        display: 'flex',
+                        width: '100%',
+                        boxShadow: theme.shadows[4],
+                        borderRadius: theme.shape.borderRadius * 4,
+                        '&:hover': {
+                            boxShadow: theme.shadows[16],
+                        },
+                    }),
+                    theme => theme.applyStyles('dark', {
                         backgroundColor: theme.palette.grey[800],
-                    },
-                }}
+                    }),
+                ]}
             >
                 <IconButton
                     onClick={changeEngine}

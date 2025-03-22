@@ -35,13 +35,13 @@ const theme = createTheme({
                     default: colors.grey[300],
                 },
                 ...palette
-            }
+            },
         },
         dark: {
             palette: {
                 mode: 'dark',
-                ...palette
-            }
+                ...palette,
+            },
         }
     },
     typography: {
@@ -124,15 +124,6 @@ const theme = createTheme({
             lineHeight: 1.5
         },
     },
-    components: {
-        MuiDivider: {
-            styleOverrides: {
-                root: {
-                    margin: '1rem 0',
-                }
-            }
-        }
-    }
 });
 
 console.log(theme);

@@ -13,13 +13,11 @@ html, body, root {
     min-height: 100%;
 }
 
-body {
-    @media (prefers-color-scheme: dark) {
-        background-image: url('https://www.desmg.com/resources/images/main_bg_blur_dark.webp');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position: center;
-        backdrop-filter: brightness(0.6) blur(32px);
-    }
+html.dark > body {
+    background-image: url('https://www.desmg.com/resources/images/main_bg_blur_dark.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    backdrop-filter: brightness(0.6) blur(32px);
 }
