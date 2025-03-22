@@ -3,6 +3,7 @@ import { Stack } from '@mui/material';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
+import ChangeThemeButton from '../Components/ChangeThemeButton';
 
 export default function Home() {
     return (
@@ -12,6 +13,14 @@ export default function Home() {
                 justifyContent: 'center',
                 minHeight: '100%',
             }}>
+            <ChangeThemeButton
+                sx={{
+                    position: 'fixed',
+                    top: 0,
+                    right: 0,
+                    m: 2,
+                }}
+            />
             <Header />
             <Main />
             <Footer />

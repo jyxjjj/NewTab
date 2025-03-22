@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { useTheme, Stack, StackProps } from '@mui/material';
+import { Stack, StackProps } from '@mui/material';
 
 export default function ItemContainer(
     {
@@ -12,9 +12,6 @@ export default function ItemContainer(
         children: ReactNode;
     } & StackProps
 ) {
-
-    const theme = useTheme();
-
     return (
         <Stack
             component='a'
@@ -23,23 +20,27 @@ export default function ItemContainer(
             direction='column'
             alignItems='center'
             justifyContent='center'
-            borderRadius={theme.shape.borderRadius}
             color='inherit'
             {...props}
-            sx={{
-                height: 96,
-                width: 96,
-                minHeight: 96,
-                minWidth: 96,
-                cursor: 'pointer',
-                textDecoration: 'none',
-                '&:hover': {
-                    boxShadow: theme.shadows[16],
-                    '@media(prefers-color-scheme: dark)': {
+            sx={[
+                theme => ({
+                    height: 96,
+                    width: 96,
+                    minHeight: 96,
+                    minWidth: 96,
+                    cursor: 'pointer',
+                    textDecoration: 'none',
+                    borderRadius: theme.shape.borderRadius,
+                    '&:hover': {
+                        boxShadow: theme.shadows[16],
+                    },
+                }),
+                theme => theme.applyStyles('dark', {
+                    '&:hover': {
                         backgroundColor: theme.palette.grey[800],
-                    }
-                },
-            }}
+                    },
+                }),
+            ]}
         >
             {children}
         </Stack>
