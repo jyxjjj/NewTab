@@ -18,7 +18,7 @@ export default function Home() {
                     position: 'fixed',
                     top: 0,
                     right: 0,
-                    m: 2,
+                    p: 2,
                 }}
             />
             <Header />

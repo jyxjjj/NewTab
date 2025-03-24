@@ -13,7 +13,7 @@ export default function Main() {
     return (
         <Stack
             component='main'
-            flexGrow={2}
+            paddingY={4}
             sx={{
                 userSelect: 'none',
                 [theme.breakpoints.up('sm')]: {
@@ -30,6 +30,7 @@ export default function Main() {
                         flexWrap='wrap'
                         alignItems='center'
                         justifyContent='center'
+                        overflow='hidden'
                     >
                         {
                             items.map((item, index2) => (

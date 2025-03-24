@@ -8,11 +8,7 @@ export default function Footer() {
             component='footer'
             direction='column'
             alignItems='center'
-            padding={2}
-            sx={{
-                position: 'relative',
-                bottom: 0,
-            }}
+            paddingY={4}
         >
             <Stack
                 direction='row'
