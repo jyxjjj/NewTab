@@ -32,7 +32,7 @@ const ShortCuts = [
         { text: 'Translate', icon: <SiGoogletranslate />, link: 'https://translate.google.com' },
         { text: 'WebStore', icon: <SiGooglechrome />, link: 'https://chromewebstore.google.com' },
         { text: 'Apple US', icon: <SiApple />, link: 'https://www.apple.com' },
-        { text: 'Apple CN', icon: <SiApple />, link: 'https://www.apple.com.cn' },
+        { text: 'Apple CN', icon: <SiApple style={{ display: 'inline-block', transform: 'scaleX(-1) scaleY(-1)' }} />, link: 'https://www.apple.com.cn' },
     ],
     [
         { text: 'Cloudflare', icon: <SiCloudflare />, link: 'https://www.cloudflare.com' },
@@ -50,7 +50,7 @@ const ShortCuts = [
         { text: 'Files', icon: <FolderIcon />, link: 'https://local.desmg.com/files/' },
         { text: 'SDWAN', icon: <LanIcon />, link: 'https://zt.desmg.com' },
         { text: 'DNS', icon: <DnsIcon />, link: 'https://dns.desmg.com' },
-        { text: 'Status', icon: <SpeedIcon />, link: 'https://status.desmg.com/' },
+        { text: 'Status', icon: <SpeedIcon />, link: 'https://status.desmg.com' },
     ],
 ];
 
