@@ -30,7 +30,6 @@ export default function Main() {
                         flexWrap='wrap'
                         alignItems='center'
                         justifyContent='center'
-                        overflow='hidden'
                     >
                         {
                             items.map((item, index2) => (
