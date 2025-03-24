@@ -40,10 +40,7 @@ const ShortCuts = [
         { text: 'Digital Ocean', icon: <SiDigitalocean />, link: 'https://www.digitalocean.com' },
         { text: 'AliYun', icon: <SiAlibabacloud />, link: 'https://www.aliyun.com' },
         { text: 'Fedora', icon: <SiFedora />, link: 'https://fedoraproject.org' },
-    ],
-    [
         { text: 'GitHub', icon: <SiGithub />, link: 'https://github.com' },
-        { text: 'Laravel', icon: <SiLaravel />, link: 'https://laravel.com/docs/12.x' },
         { text: 'MUI', icon: <SiMui />, link: 'https://mui.com/material-ui/all-components/' },
     ],
     [
@@ -59,7 +56,7 @@ const ShortCuts = [
 ];
 
 if (window.location.href.startsWith('chrome-extension://')) {
-    ShortCuts[3] = [
+    ShortCuts[2] = [
         { text: 'History', icon: <HistoryIcon />, link: 'chrome://history' },
         { text: 'Downloads', icon: <FileDownloadIcon />, link: 'chrome://downloads' },
         { text: 'Password Manager', icon: <KeyIcon />, link: 'chrome://password-manager/passwords' },
