@@ -12,11 +12,23 @@ export default function ItemContainer(
         children: ReactNode;
     } & StackProps
 ) {
+
+    const isChromeURL = href.startsWith('chrome://');
+
     return (
         <Stack
-            component='a'
-            href={href}
-            rel='noopener noreferrer'
+            {
+            ...(
+                isChromeURL ? {
+                    component: 'a',
+                    onClick: () => chrome.tabs.update({ url: href }),
+                } : {
+                    component: 'a',
+                    href: href,
+                    rel: 'noopener noreferrer',
+                }
+            )
+            }
             direction='column'
             alignItems='center'
             justifyContent='center'
