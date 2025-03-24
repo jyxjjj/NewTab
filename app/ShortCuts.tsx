@@ -21,7 +21,6 @@ import {
     SiGoogle,
     SiGooglechrome,
     SiGoogletranslate,
-    SiLaravel,
     SiMui,
     SiWordpress,
 } from '@icons-pack/react-simple-icons';
