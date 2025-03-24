@@ -63,10 +63,11 @@ export default function Header() {
 
     return (
         <Stack
-            padding={2}
             component="header"
             direction="row"
             alignItems="center"
+            flexGrow={1}
+            padding={2}
             sx={{
                 width: '95vw',
                 [theme.breakpoints.up('sm')]: {
