@@ -66,10 +66,9 @@ export default function Header() {
             component="header"
             direction="row"
             alignItems="center"
-            flexGrow={1}
-            padding={2}
+            marginTop={8}
             sx={{
-                width: '95vw',
+                width: '75vw',
                 [theme.breakpoints.up('sm')]: {
                     width: '65vw',
                 },
