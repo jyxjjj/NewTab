@@ -21,6 +21,7 @@ import {
     SiGoogle,
     SiGooglechrome,
     SiGoogletranslate,
+    SiMaterialdesignicons,
     SiMui,
     SiWordpress,
 } from '@icons-pack/react-simple-icons';
@@ -41,6 +42,7 @@ const ShortCuts = [
         { text: 'Fedora', icon: <SiFedora />, link: 'https://fedoraproject.org' },
         { text: 'GitHub', icon: <SiGithub />, link: 'https://github.com' },
         { text: 'MUI', icon: <SiMui />, link: 'https://mui.com/material-ui/all-components/' },
+        { text: 'Material Icons', icon: <SiMaterialdesignicons />, link: 'https://fonts.google.com/icons?icon.set=Material+Icons' }
     ],
     [
     ],
