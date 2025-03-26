@@ -62,9 +62,7 @@ const theme = createTheme({
             fontSize: 'calc(1.375rem + 1.5vw)',
             fontWeight: 500,
             lineHeight: 1.2,
-            root: {
-                margin: '1rem 0',
-            },
+            margin: '1rem 0',
             '@media (min-width:1200px)': {
                 fontSize: '2.5rem'
             },

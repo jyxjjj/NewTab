@@ -63,9 +63,9 @@ export default function Header() {
 
     return (
         <Stack
-            component="header"
-            direction="row"
-            alignItems="center"
+            component='header'
+            direction='row'
+            alignItems='center'
             marginTop={8}
             sx={{
                 width: '75vw',
@@ -96,12 +96,12 @@ export default function Header() {
                     {searchEngine === 'google' ? <SiGoogle /> : <SiBaidu />}
                 </IconButton>
                 <InputBase
-                    id="searchInput"
+                    id='searchInput'
                     sx={{ ml: 1, flex: 1 }}
                     value={query}
                     onChange={setKeyword}
                     onKeyDown={handleKey}
-                    placeholder="Search"
+                    placeholder='Search'
                     autoFocus
                 />
                 <IconButton onClick={handleSearch}>

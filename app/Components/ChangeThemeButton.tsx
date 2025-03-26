@@ -29,7 +29,7 @@ export default function ChangeThemeButton(
 
     return (
         <IconButton
-            size="large"
+            size='large'
             {...props}
             onClick={changeTheme}
         >
