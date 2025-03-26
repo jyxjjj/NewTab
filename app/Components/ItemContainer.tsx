@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState, useEffect } from 'react';
 
 import { Stack, StackProps } from '@mui/material';
 
@@ -13,22 +13,39 @@ export default function ItemContainer(
     } & StackProps
 ) {
 
-    const isChromeURL = href.startsWith('chrome://');
+    const [obj, setObj] = useState<{
+        href?: string;
+        onClick?: React.MouseEventHandler;
+        rel?: string;
+    }>({});
+
+    useEffect(() => {
+        const isDESMG = ((href) => {
+            try {
+                return new URL(href).hostname.endsWith('.desmg.com');
+            } catch {
+                return false;
+            }
+        })(href);
+        const isChromeURL = href.startsWith('chrome://');
+        if (isDESMG) {
+            setObj({ href });
+        } else if (isChromeURL) {
+            setObj({
+                onClick: () => chrome.tabs.update({ url: href }),
+            });
+        } else {
+            setObj({
+                href: href,
+                rel: 'external noopener noreferrer nofollow',
+            });
+        }
+    }, [href]);
 
     return (
         <Stack
-            {
-            ...(
-                isChromeURL ? {
-                    component: 'a',
-                    onClick: () => chrome.tabs.update({ url: href }),
-                } : {
-                    component: 'a',
-                    href: href,
-                    rel: 'noopener noreferrer',
-                }
-            )
-            }
+            component='a'
+            {...obj}
             direction='column'
             alignItems='center'
             justifyContent='center'

@@ -32,7 +32,7 @@ export default function ItemIcon(
             {
                 icon ?? <img
                     src={`${link}/favicon.ico`}
-                    referrerPolicy="no-referrer"
+                    referrerPolicy='no-referrer'
                     style={{
                         width: 24,
                         height: 24,

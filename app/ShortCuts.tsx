@@ -1,13 +1,15 @@
 import {
+    Bookmarks as BookmarksIcon,
     Dns as DnsIcon,
-    Folder as FolderIcon,
-    Lan as LanIcon,
-    Speed as SpeedIcon,
-    FileDownload as FileDownloadIcon,
     Extension as ExtensionIcon,
+    FileDownload as FileDownloadIcon,
+    Folder as FolderIcon,
     History as HistoryIcon,
+    InsertDriveFile as BlankPageIcon,
     Key as KeyIcon,
+    Lan as LanIcon,
     Settings as SettingsIcon,
+    Speed as SpeedIcon,
 } from '@mui/icons-material';
 
 import {
@@ -45,6 +47,13 @@ const ShortCuts = [
         { text: 'Material Icons', icon: <SiMaterialdesignicons />, link: 'https://fonts.google.com/icons?icon.set=Material+Icons' }
     ],
     [
+        { text: 'Base64', icon: <BlankPageIcon />, link: 'https://base64.us' },
+        { text: 'URLDecode', icon: <BlankPageIcon />, link: 'https://www.qianbo.com.cn/Tool/Url-Encode.html' },
+        { text: 'Word Count', icon: <BlankPageIcon />, link: 'https://www.eteste.com' },
+        { text: 'Num Base', icon: <BlankPageIcon />, link: 'https://tool.oschina.net/hexconvert/' },
+        { text: 'Timestamp', icon: <BlankPageIcon />, link: 'https://tool.lu/timestamp/' },
+    ],
+    [
     ],
     [
         { text: 'DESMG', icon: null, link: 'https://www.desmg.com' },
@@ -57,13 +66,14 @@ const ShortCuts = [
 ];
 
 if (window.location.href.startsWith('chrome-extension://')) {
-    ShortCuts[2] = [
+    [
         { text: 'History', icon: <HistoryIcon />, link: 'chrome://history' },
         { text: 'Downloads', icon: <FileDownloadIcon />, link: 'chrome://downloads' },
         { text: 'Password Manager', icon: <KeyIcon />, link: 'chrome://password-manager/passwords' },
+        { text: 'Bookmark', icon: <BookmarksIcon />, link: 'chrome://bookmarks' },
         { text: 'Extensions', icon: <ExtensionIcon />, link: 'chrome://extensions/' },
         { text: 'Settings', icon: <SettingsIcon />, link: 'chrome://settings' },
-    ];
+    ].forEach((item) => ShortCuts[ShortCuts.length - 2].push(item));
 }
 
 export {
