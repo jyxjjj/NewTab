@@ -3,28 +3,7 @@
     "version": "0.1.0",
     "manifest_version": 3,
     "description": "New Tab",
-    "permissions": [
-        "tabs",
-        "scripting",
-        "userScripts"
-    ],
-    "host_permissions": [
-        "chrome://newtab/",
-        "chrome://new-tab-page/"
-    ],
     "chrome_url_overrides": {
         "newtab": "newtab.html"
-    },
-    "content_scripts": [
-        {
-            "matches": [
-                "chrome://newtab/",
-                "chrome://new-tab-page/"
-            ],
-            "js": [
-                "newtab.js"
-            ],
-            "run_at": "document_idle"
-        }
-    ]
+    }
 }
