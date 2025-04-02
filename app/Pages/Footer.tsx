@@ -1,6 +1,4 @@
-import { Link } from '@mui/material';
-import { Stack } from '@mui/material';
-import { Typography } from '@mui/material';
+import { Link, Stack, Typography } from '@mui/material';
 
 export default function Footer() {
     return (

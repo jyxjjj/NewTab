@@ -2,10 +2,14 @@ import { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react';
 
 import { useTheme, Stack, IconButton, Paper, InputBase } from '@mui/material';
 
-import SearchIcon from '@mui/icons-material/Search';
+import {
+    Search as SearchIcon
+} from '@mui/icons-material';
 
-import { SiGoogle } from '@icons-pack/react-simple-icons';
-import { SiBaidu } from '@icons-pack/react-simple-icons';
+import {
+    SiGoogle,
+    SiBaidu
+} from '@icons-pack/react-simple-icons';
 
 export default function Header() {
 
