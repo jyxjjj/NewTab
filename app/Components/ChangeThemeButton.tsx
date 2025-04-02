@@ -1,8 +1,10 @@
 import { useColorScheme, IconButton, IconButtonProps } from '@mui/material';
 
-import LightModeIcon from '@mui/icons-material/LightMode';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
-import ContrastIcon from '@mui/icons-material/Contrast';
+import {
+    LightMode as LightModeIcon,
+    DarkMode as DarkModeIcon,
+    Contrast as ContrastIcon
+} from '@mui/icons-material';
 
 export default function ChangeThemeButton(
     {
