@@ -1,13 +1,14 @@
 import {
+    InsertDriveFile as BlankPageIcon,
     Bookmarks as BookmarksIcon,
     Dns as DnsIcon,
     Extension as ExtensionIcon,
     FileDownload as FileDownloadIcon,
     Folder as FolderIcon,
     History as HistoryIcon,
-    InsertDriveFile as BlankPageIcon,
     Key as KeyIcon,
     Lan as LanIcon,
+    Gavel as LawsIcon,
     Settings as SettingsIcon,
     Speed as SpeedIcon,
 } from '@mui/icons-material';
@@ -58,6 +59,7 @@ const ShortCuts = [
     [
         { text: 'DESMG', icon: null, link: 'https://www.desmg.com' },
         { text: 'Blog', icon: <SiWordpress />, link: 'https://blog.desmg.com' },
+        { text: 'Laws', icon: <LawsIcon />, link: 'https://local.desmg.com/laws/' },
         { text: 'Files', icon: <FolderIcon />, link: 'https://local.desmg.com/files/' },
         { text: 'SDWAN', icon: <LanIcon />, link: 'https://zt.desmg.com' },
         { text: 'DNS', icon: <DnsIcon />, link: 'https://dns.desmg.com' },

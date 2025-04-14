@@ -1,4 +1,4 @@
-import { useTheme, Stack } from '@mui/material';
+import { Stack, useTheme } from '@mui/material';
 
 import ItemContainer from '../Components/ItemContainer';
 import ItemIcon from '../Components/ItemIcon';
