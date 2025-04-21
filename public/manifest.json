@@ -5,5 +5,16 @@
     "description": "New Tab",
     "chrome_url_overrides": {
         "newtab": "newtab.html"
-    }
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.bilibili.com/*"
+            ],
+            "js": [
+                "bilibili_copy.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ]
 }
