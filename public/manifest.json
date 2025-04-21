@@ -3,6 +3,10 @@
     "version": "0.1.0",
     "manifest_version": 3,
     "description": "New Tab",
+    "host_permissions": [
+        "https://www.google.com/complete/search",
+        "https://www.baidu.com/sugrec"
+    ],
     "chrome_url_overrides": {
         "newtab": "newtab.html"
     },
