@@ -23,6 +23,7 @@ export default function Header() {
 
     const [searchEngine, setSearchEngine] = useState('google');
     const [query, setQuery] = useState('');
+    const [suggestions, setSuggestions] = useState<Array<string>>(['test1', 'test2']);
     const abortControllerRef = useRef<AbortController | null>(null);
 
     useEffect(() => {
@@ -35,12 +36,12 @@ export default function Header() {
         return () => clearInterval(foucsInterval);
     }, []);
 
-    const setKeyword = (e: ChangeEvent<HTMLInputElement>) => {
+    function setKeyword(e: ChangeEvent<HTMLInputElement>) {
         setQuery(e.target.value);
         suggest(e.target.value);
     };
 
-    const handleKey = (e: KeyboardEvent<HTMLInputElement>) => {
+    function handleKey(e: KeyboardEvent<HTMLInputElement>) {
         switch (e.key) {
             case 'Enter':
                 handleSearch();
@@ -55,46 +56,66 @@ export default function Header() {
         }
     };
 
-    const changeEngine = function () {
+    function changeEngine() {
         setSearchEngine(searchEngine === 'google' ? 'baidu' : 'google');
     };
 
-    const handleSearch = function () {
+    function handleSearch() {
         window.location.href =
             searchEngine === 'google'
                 ? 'https://www.google.com/search?q=' + encodeURIComponent(query)
                 : 'https://www.baidu.com/s?wd=' + encodeURIComponent(query);
     };
 
-    const suggest = function (kw: string) {
+    function suggest(kw: string) {
         if (abortControllerRef.current) {
             abortControllerRef.current.abort();
         }
-        abortControllerRef.current = new AbortController();
-        kw = encodeURIComponent(kw);
-        if (searchEngine === 'google') {
-            fetch(`https://www.google.com/complete/search?hl=en&output=toolbar&q=${kw}`, { signal: abortControllerRef.current.signal })
-                .then((response) => response.text())
-                .then((data) => {
-                    const parser = new DOMParser();
-                    const xmlDoc = parser.parseFromString(data, 'application/xml');
-                    const suggestions = xmlDoc.querySelectorAll('suggestion');
-                    const dataList = Array.from(suggestions).map(el => el.getAttribute('data'));
-                    console.log(dataList);
-                })
-                .catch(() => void (0));
+        kw = kw.trim();
+        if (kw.length == 0) {
+            return;
         }
-        if (searchEngine === 'baidu') {
-            fetch(`https://www.baidu.com/sugrec?json=1&prod=pc&wd=${kw}`, { signal: abortControllerRef.current.signal })
-                .then((response) => response.json())
-                .then((data) => {
-                    const suggestions: string[] = [];
-                    for (const suggestion of data.g) {
-                        suggestions.push(suggestion.q);
-                    }
-                    console.log(suggestions);
-                })
-                .catch(() => void (0));
+        if (kw.length > 32) {
+            kw = kw.slice(0, 32);
+        }
+        kw = encodeURIComponent(kw);
+        abortControllerRef.current = new AbortController;
+        const signal = { signal: abortControllerRef.current.signal };
+        try {
+            if (searchEngine === 'google') {
+                fetch(`https://www.google.com/complete/search?hl=en&output=toolbar&q=${kw}`, signal)
+                    .then(res => res.text())
+                    .then(data => {
+                        setSuggestions(
+                            Array.from(
+                                (new DOMParser)
+                                    .parseFromString(data, 'application/xml')
+                                    .querySelectorAll('suggestion')
+                            ).map(
+                                suggestion => suggestion.getAttribute('data')
+                            ).filter(
+                                (suggestion: string | null) => suggestion !== null
+                            )
+                        );
+                    }).catch(() => { });
+            }
+            if (searchEngine === 'baidu') {
+                fetch(`https://www.baidu.com/sugrec?json=1&prod=pc&wd=${kw}`, signal)
+                    .then(res => res.json())
+                    .then(data => {
+                        setSuggestions(
+                            (
+                                data.g || []
+                            ).map(
+                                (suggestion: { q: string }) => suggestion.q
+                            ).filter(
+                                (suggestion: string | null) => suggestion !== null
+                            )
+                        );
+                    }).catch(() => { });
+            }
+        } catch {
+            //
         }
     };
 
