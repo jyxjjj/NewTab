@@ -2,8 +2,6 @@
 
 This project is solely intended to address the “Remove Doodle” and “Not Enough Shortcuts” issues.
 
-[Live Preview](https://www.desmg.com/newtab.html)
-
 ## Installation
 
 ```
