@@ -2,6 +2,8 @@
 
 This project is solely intended to address the “Remove Doodle” and “Not Enough Shortcuts” issues.
 
+This can also remove clipboard append from Bilibili CVs.
+
 ## Installation
 
 ```
