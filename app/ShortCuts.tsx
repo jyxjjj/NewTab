@@ -36,7 +36,7 @@ const ShortCuts = [
         { text: 'Translate', icon: <SiGoogletranslate />, link: 'https://translate.google.com' },
         { text: 'WebStore', icon: <SiGooglechrome />, link: 'https://chromewebstore.google.com' },
         { text: 'Apple US', icon: <SiApple />, link: 'https://www.apple.com' },
-        { text: 'Apple CN', icon: <SiApple style={{ display: 'inline-block', transform: 'scaleX(-1) scaleY(-1)' }} />, link: 'https://www.apple.com.cn' },
+        { text: 'Apple CN', icon: <SiApple style={{ transform: 'scaleX(-1) scaleY(-1)' }} />, link: 'https://www.apple.com.cn' },
     ],
     [
         { text: 'Cloudflare', icon: <SiCloudflare />, link: 'https://www.cloudflare.com' },

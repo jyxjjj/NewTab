@@ -1,4 +1,4 @@
-import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, KeyboardEvent, useRef, useState } from 'react';
 
 import {
     IconButton,
@@ -22,24 +22,12 @@ export default function Header() {
     const theme = useTheme();
 
     const [searchEngine, setSearchEngine] = useState('google');
-    const [query, setQuery] = useState('');
-    const [suggestions, setSuggestions] = useState<Array<string>>(['test1', 'test2']);
+    const [suggestions, setSuggestions] = useState<Array<string>>([]);
     const abortControllerRef = useRef<AbortController | null>(null);
 
-    useEffect(() => {
-        const searchInput = document.querySelector('#searchInput') as HTMLInputElement;
-        const foucsInterval = setInterval(() => {
-            if (document.activeElement !== searchInput) {
-                searchInput?.focus();
-            }
-        }, 1000);
-        return () => clearInterval(foucsInterval);
-    }, []);
-
     function setKeyword(e: ChangeEvent<HTMLInputElement>) {
-        setQuery(e.target.value);
         suggest(e.target.value);
-    };
+    }
 
     function handleKey(e: KeyboardEvent<HTMLInputElement>) {
         switch (e.key) {
@@ -54,18 +42,20 @@ export default function Header() {
             default:
                 break;
         }
-    };
+    }
 
     function changeEngine() {
         setSearchEngine(searchEngine === 'google' ? 'baidu' : 'google');
-    };
+        document.getElementById('searchInput')?.focus();
+    }
 
     function handleSearch() {
+        const searchInput = document.getElementById('searchInput') as HTMLInputElement;
         window.location.href =
             searchEngine === 'google'
-                ? 'https://www.google.com/search?q=' + encodeURIComponent(query)
-                : 'https://www.baidu.com/s?wd=' + encodeURIComponent(query);
-    };
+                ? 'https://www.google.com/search?q=' + encodeURIComponent(searchInput.value)
+                : 'https://www.baidu.com/s?wd=' + encodeURIComponent(searchInput.value);
+    }
 
     function suggest(kw: string) {
         if (abortControllerRef.current) {
@@ -117,19 +107,27 @@ export default function Header() {
         } catch {
             //
         }
-    };
+    }
+
+    function handleChooseSuggestion(suggestion: string) {
+        console.log(suggestion);
+        const searchInput = document.getElementById('searchInput') as HTMLInputElement;
+        searchInput.value = suggestion;
+        handleSearch();
+    }
 
     return (
         <Stack
             component='header'
             direction='row'
-            alignItems='center'
-            marginTop={8}
             sx={{
                 width: '75vw',
                 [theme.breakpoints.up('sm')]: {
                     width: '65vw',
                 },
+                position: 'fixed',
+                top: '4rem',
+                zIndex: theme.zIndex.tooltip,
             }}
         >
             <Paper
@@ -138,33 +136,56 @@ export default function Header() {
                         display: 'flex',
                         width: '100%',
                         boxShadow: theme.shadows[4],
-                        borderRadius: theme.shape.borderRadius * 4,
                         '&:hover': {
                             boxShadow: theme.shadows[16],
                         },
+                        flexDirection: 'column',
                     }),
                     theme => theme.applyStyles('dark', {
                         backgroundColor: theme.palette.grey[800],
                     }),
                 ]}
             >
-                <IconButton
-                    onClick={changeEngine}
-                >
-                    {searchEngine === 'google' ? <SiGoogle /> : <SiBaidu />}
-                </IconButton>
-                <InputBase
-                    id='searchInput'
-                    sx={{ ml: 1, flex: 1 }}
-                    value={query}
-                    onChange={setKeyword}
-                    onKeyDown={handleKey}
-                    placeholder='Search'
-                    autoFocus
-                />
-                <IconButton onClick={handleSearch}>
-                    <SearchIcon />
-                </IconButton>
+                <Stack direction="row">
+                    <IconButton
+                        onClick={changeEngine}
+                    >
+                        {searchEngine === 'google' ? <SiGoogle /> : <SiBaidu />}
+                    </IconButton>
+                    <InputBase
+                        id='searchInput'
+                        sx={{ ml: 1, flex: 1 }}
+                        onChange={setKeyword}
+                        onKeyDown={handleKey}
+                        placeholder='Search'
+                        autoFocus
+                    />
+                    <IconButton onClick={handleSearch}>
+                        <SearchIcon />
+                    </IconButton>
+                </Stack>
+                {suggestions.length > 0 && (
+                    <Stack>
+                        {suggestions.map((suggestion, index) => (
+                            <Paper
+                                key={index}
+                                square
+                                onClick={() => handleChooseSuggestion(suggestion)}
+                                sx={{
+                                    padding: '.5rem 1rem .5rem 1rem',
+                                    cursor: 'pointer',
+                                    boxShadow: 'none',
+                                    background: 'inherit',
+                                    '&:hover': {
+                                        backgroundColor: theme.palette.grey[700],
+                                    },
+                                }}
+                            >
+                                {suggestion}
+                            </Paper>
+                        ))}
+                    </Stack>
+                )}
             </Paper>
         </Stack>
     );
