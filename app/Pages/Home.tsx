@@ -48,6 +48,7 @@ export default function Home() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 minHeight: '100%',
+                padding: '2rem',
             }}>
             <SearchButton
                 setShow={setShow}
@@ -55,7 +56,6 @@ export default function Home() {
                     position: 'fixed',
                     top: 0,
                     left: 0,
-                    p: 2,
                 }}
             />
             <ChangeThemeButton
@@ -63,7 +63,6 @@ export default function Home() {
                     position: 'fixed',
                     top: 0,
                     right: 0,
-                    p: 2,
                 }}
             />
             {show && <Header />}
