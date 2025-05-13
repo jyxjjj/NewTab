@@ -1,5 +1,4 @@
 import {
-    InsertDriveFile as BlankPageIcon,
     Bookmarks as BookmarksIcon,
     Dns as DnsIcon,
     Extension as ExtensionIcon,
@@ -39,20 +38,13 @@ const ShortCuts = [
         { text: 'Apple CN', icon: <SiApple style={{ transform: 'scaleX(-1) scaleY(-1)' }} />, link: 'https://www.apple.com.cn' },
     ],
     [
-        { text: 'Cloudflare', icon: <SiCloudflare />, link: 'https://www.cloudflare.com' },
+        { text: 'Cloudflare', icon: <SiCloudflare />, link: 'https://dash.cloudflare.com' },
         { text: 'Digital Ocean', icon: <SiDigitalocean />, link: 'https://www.digitalocean.com' },
         { text: 'AliYun', icon: <SiAlibabacloud />, link: 'https://www.aliyun.com' },
         { text: 'Fedora', icon: <SiFedora />, link: 'https://fedoraproject.org' },
-        { text: 'GitHub', icon: <SiGithub />, link: 'https://github.com' },
+        { text: 'GitHub', icon: <SiGithub />, link: 'https://github.com/jyxjjj/' },
         { text: 'MUI', icon: <SiMui />, link: 'https://mui.com/material-ui/all-components/' },
         { text: 'Material Icons', icon: <SiMaterialdesignicons />, link: 'https://fonts.google.com/icons?icon.set=Material+Icons' }
-    ],
-    [
-        { text: 'Base64', icon: <BlankPageIcon />, link: 'https://base64.us' },
-        { text: 'URLDecode', icon: <BlankPageIcon />, link: 'https://www.qianbo.com.cn/Tool/Url-Encode.html' },
-        { text: 'Word Count', icon: <BlankPageIcon />, link: 'https://www.eteste.com' },
-        { text: 'Num Base', icon: <BlankPageIcon />, link: 'https://tool.oschina.net/hexconvert/' },
-        { text: 'Timestamp', icon: <BlankPageIcon />, link: 'https://tool.lu/timestamp/' },
     ],
     [
     ],
