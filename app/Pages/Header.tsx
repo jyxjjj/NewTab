@@ -82,9 +82,9 @@ export default function Header() {
                                     .parseFromString(data, 'application/xml')
                                     .querySelectorAll('suggestion')
                             ).map(
-                                suggestion => suggestion.getAttribute('data')
+                                suggestion => suggestion.getAttribute('data') || ''
                             ).filter(
-                                (suggestion: string | null) => suggestion !== null
+                                (suggestion: string) => suggestion !== ''
                             )
                         );
                     }).catch(() => { });
