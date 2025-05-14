@@ -94,9 +94,7 @@ export default function Header() {
                     .then(res => res.json())
                     .then(data => {
                         setSuggestions(
-                            (
-                                data.g || []
-                            ).map(
+                            (data.g || []).map(
                                 (suggestion: { q: string }) => suggestion.q
                             ).filter(
                                 (suggestion: string | null) => suggestion !== null
