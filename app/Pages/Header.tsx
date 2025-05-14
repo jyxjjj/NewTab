@@ -46,15 +46,15 @@ export default function Header() {
 
     function changeEngine() {
         setSearchEngine(searchEngine === 'google' ? 'baidu' : 'google');
-        document.getElementById('searchInput')?.focus();
+        inputRef?.current?.focus();
     }
 
     function handleSearch() {
-        const searchInput = document.getElementById('searchInput') as HTMLInputElement;
+        const value = inputRef?.current?.value ?? '';
         window.location.href =
             searchEngine === 'google'
-                ? 'https://www.google.com/search?q=' + encodeURIComponent(searchInput.value)
-                : 'https://www.baidu.com/s?wd=' + encodeURIComponent(searchInput.value);
+                ? 'https://www.google.com/search?q=' + encodeURIComponent(value)
+                : 'https://www.baidu.com/s?wd=' + encodeURIComponent(value);
     }
 
     function suggest(kw: string) {
@@ -78,7 +78,7 @@ export default function Header() {
                     .then(data => {
                         setSuggestions(
                             Array.from(
-                                (new DOMParser)
+                                new DOMParser()
                                     .parseFromString(data, 'application/xml')
                                     .querySelectorAll('suggestion')
                             ).map(
