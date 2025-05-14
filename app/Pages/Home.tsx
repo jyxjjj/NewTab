@@ -23,7 +23,6 @@ export default function Home() {
     const handleSpotlight = useCallback((e: KeyboardEvent) => {
         if ((e.key === 'f' && (e.ctrlKey || e.metaKey)) || e.key === '/') {
             setShow(true);
-            document.getElementById('searchInput')?.focus();
             e.preventDefault();
         }
         if (e.key === 'Escape') {
