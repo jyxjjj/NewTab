@@ -21,8 +21,8 @@ export default function Header() {
 
     const theme = useTheme();
 
-    const [searchEngine, setSearchEngine] = useState('google');
-    const [suggestions, setSuggestions] = useState<Array<string>>([]);
+    const [searchEngine, setSearchEngine] = useState<'google' | 'baidu'>('google');
+    const [suggestions, setSuggestions] = useState<string[]>([]);
     const abortControllerRef = useRef<AbortController | null>(null);
 
     function setKeyword(e: ChangeEvent<HTMLInputElement>) {
