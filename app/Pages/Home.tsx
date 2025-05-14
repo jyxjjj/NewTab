@@ -22,12 +22,7 @@ export default function Home() {
     }, [setShow]);
 
     const handleSpotlight = useCallback((e: KeyboardEvent) => {
-        if (e.key === 'f' && (e.ctrlKey || e.metaKey)) {
-            setShow(true);
-            document.getElementById('searchInput')?.focus();
-            e.preventDefault();
-        }
-        if (e.key === '/') {
+        if ((e.key === 'f' && (e.ctrlKey || e.metaKey)) || e.key === '/') {
             setShow(true);
             document.getElementById('searchInput')?.focus();
             e.preventDefault();
