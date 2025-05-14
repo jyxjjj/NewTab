@@ -144,14 +144,12 @@ export default function Header() {
                     }),
                 ]}
             >
-                <Stack direction="row">
-                    <IconButton
-                        onClick={changeEngine}
-                    >
+                <Stack direction='row'>
+                    <IconButton onClick={changeEngine}>
                         {searchEngine === 'google' ? <SiGoogle /> : <SiBaidu />}
                     </IconButton>
                     <InputBase
-                        id='searchInput'
+                        inputRef={inputRef}
                         sx={{ ml: 1, flex: 1 }}
                         onChange={setKeyword}
                         onKeyDown={handleKey}
