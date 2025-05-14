@@ -71,39 +71,35 @@ export default function Header() {
         kw = encodeURIComponent(kw);
         abortControllerRef.current = new AbortController;
         const signal = { signal: abortControllerRef.current.signal };
-        try {
-            if (searchEngine === 'google') {
-                fetch(`https://www.google.com/complete/search?hl=en&output=toolbar&q=${kw}`, signal)
-                    .then(res => res.text())
-                    .then(data => {
-                        setSuggestions(
-                            Array.from(
-                                new DOMParser()
-                                    .parseFromString(data, 'application/xml')
-                                    .querySelectorAll('suggestion')
-                            ).map(
-                                suggestion => suggestion.getAttribute('data') || ''
-                            ).filter(
-                                (suggestion: string) => suggestion !== ''
-                            )
-                        );
-                    }).catch(() => { });
-            }
-            if (searchEngine === 'baidu') {
-                fetch(`https://www.baidu.com/sugrec?json=1&prod=pc&wd=${kw}`, signal)
-                    .then(res => res.json())
-                    .then(data => {
-                        setSuggestions(
-                            (data.g || []).map(
-                                (suggestion: { q: string }) => suggestion.q
-                            ).filter(
-                                (suggestion: string | null) => suggestion !== null
-                            )
-                        );
-                    }).catch(() => { });
-            }
-        } catch {
-            //
+        if (searchEngine === 'google') {
+            fetch(`https://www.google.com/complete/search?hl=en&output=toolbar&q=${kw}`, signal)
+                .then(res => res.text())
+                .then(data => {
+                    setSuggestions(
+                        Array.from(
+                            new DOMParser()
+                                .parseFromString(data, 'application/xml')
+                                .querySelectorAll('suggestion')
+                        ).map(
+                            suggestion => suggestion.getAttribute('data') || ''
+                        ).filter(
+                            (suggestion: string) => suggestion !== ''
+                        )
+                    );
+                }).catch(() => { });
+        }
+        if (searchEngine === 'baidu') {
+            fetch(`https://www.baidu.com/sugrec?json=1&prod=pc&wd=${kw}`, signal)
+                .then(res => res.json())
+                .then(data => {
+                    setSuggestions(
+                        (data.g || []).map(
+                            (suggestion: { q: string }) => suggestion.q
+                        ).filter(
+                            (suggestion: string | null) => suggestion !== null
+                        )
+                    );
+                }).catch(() => { });
         }
     }
 
