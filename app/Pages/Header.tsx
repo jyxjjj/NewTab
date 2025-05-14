@@ -17,7 +17,11 @@ import {
     SiGoogle
 } from '@icons-pack/react-simple-icons';
 
-export default function Header() {
+interface HeaderProps {
+    inputRef?: React.RefObject<HTMLInputElement | null>;
+}
+
+export default function Header({ inputRef }: HeaderProps) {
 
     const theme = useTheme();
 
