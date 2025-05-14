@@ -14,7 +14,6 @@ export default function Home() {
     const [show, setShow] = useState(false);
     const deferredShow = useDeferredValue(show);
 
-
     const handleClick = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
         if (e.target === e.currentTarget) {
             setShow(false);
