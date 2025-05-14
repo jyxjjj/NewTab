@@ -19,7 +19,7 @@ export default function Home() {
         if (e.target === e.currentTarget) {
             setShow(false);
         }
-    }, [setShow]);
+    }, []);
 
     const handleSpotlight = useCallback((e: KeyboardEvent) => {
         if ((e.key === 'f' && (e.ctrlKey || e.metaKey)) || e.key === '/') {
@@ -31,7 +31,7 @@ export default function Home() {
             setShow(false);
             e.preventDefault();
         }
-    }, [setShow]);
+    }, []);
 
     useEffect(() => {
         window.addEventListener('keydown', handleSpotlight);
