@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useDeferredValue, useEffect, useState } from 'react';
 
 import { Stack } from '@mui/material';
 
@@ -11,35 +11,38 @@ import Main from './Main';
 export default function Home() {
 
     const [show, setShow] = useState(false);
+    const deferredShow = useDeferredValue(show);
 
-    function handleClick(e: React.MouseEvent<HTMLDivElement>) {
+
+    const handleClick = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
         if (e.target === e.currentTarget) {
             setShow(false);
         }
-    }
+    }, [setShow]);
+
+    const handleSpotlight = useCallback((e: KeyboardEvent) => {
+        if (e.key === 'f' && (e.ctrlKey || e.metaKey)) {
+            setShow(true);
+            document.getElementById('searchInput')?.focus();
+            e.preventDefault();
+        }
+        if (e.key === '/') {
+            setShow(true);
+            document.getElementById('searchInput')?.focus();
+            e.preventDefault();
+        }
+        if (e.key === 'Escape') {
+            setShow(false);
+            e.preventDefault();
+        }
+    }, [setShow]);
 
     useEffect(() => {
-        function handleSpotlight(e: KeyboardEvent) {
-            if (e.key === 'f' && (e.ctrlKey || e.metaKey)) {
-                setShow(true);
-                document.getElementById('searchInput')?.focus();
-                e.preventDefault();
-            }
-            if (e.key === '/') {
-                setShow(true);
-                document.getElementById('searchInput')?.focus();
-                e.preventDefault();
-            }
-            if (e.key === 'Escape') {
-                setShow(false);
-                e.preventDefault();
-            }
-        }
         window.addEventListener('keydown', handleSpotlight);
         return () => {
             window.removeEventListener('keydown', handleSpotlight);
         };
-    }, [show, setShow]);
+    }, [handleSpotlight]);
 
     return (
         <Stack
@@ -65,7 +68,7 @@ export default function Home() {
                     right: 0,
                 }}
             />
-            {show && <Header />}
+            {deferredShow && <Header />}
             <Main />
             <Footer />
         </Stack>
