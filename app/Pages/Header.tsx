@@ -108,9 +108,10 @@ export default function Header({ inputRef }: HeaderProps) {
     }
 
     function handleChooseSuggestion(suggestion: string) {
-        console.log(suggestion);
-        const searchInput = document.getElementById('searchInput') as HTMLInputElement;
-        searchInput.value = suggestion;
+        const input = inputRef?.current;
+        if (input) {
+            input.value = suggestion;
+        }
         handleSearch();
     }
 
