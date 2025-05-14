@@ -1,4 +1,4 @@
-import { useCallback, useDeferredValue, useEffect, useState } from 'react';
+import { useCallback, useDeferredValue, useEffect, useRef, useState } from 'react';
 
 import { Stack } from '@mui/material';
 
@@ -10,6 +10,7 @@ import Main from './Main';
 
 export default function Home() {
 
+    const inputRef = useRef<HTMLInputElement | null>(null);
     const [show, setShow] = useState(false);
     const deferredShow = useDeferredValue(show);
 
@@ -68,7 +69,7 @@ export default function Home() {
                     right: 0,
                 }}
             />
-            {deferredShow && <Header />}
+            {deferredShow && <Header inputRef={inputRef} />}
             <Main />
             <Footer />
         </Stack>
