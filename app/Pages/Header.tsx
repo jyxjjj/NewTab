@@ -62,7 +62,7 @@ export default function Header() {
             abortControllerRef.current.abort();
         }
         kw = kw.trim();
-        if (kw.length == 0) {
+        if (kw.length === 0) {
             return;
         }
         if (kw.length > 32) {
