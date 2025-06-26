@@ -16,14 +16,14 @@ export default function ItemIcon(
         <Paper
             {...props}
             sx={[
-                theme => ({
+                {
                     width: 48,
                     height: 48,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    borderRadius: theme.shape.borderRadius * 16,
-                }),
+                    borderRadius: '64px',
+                },
                 theme => theme.applyStyles('dark', {
                     backgroundColor: theme.palette.grey[800],
                 }),
