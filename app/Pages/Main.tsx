@@ -34,7 +34,7 @@ export default function Main() {
                         {
                             items.map((item, index2) => (
                                 <ItemContainer key={index2} href={item.link}>
-                                    <ItemIcon elevation={8} icon={item.icon} link={item.link} />
+                                    <ItemIcon elevation={8} icon={item.icon} link={item.link} color={item.color}/>
                                     <ItemTitle text={item.text} />
                                 </ItemContainer>
                             ))
