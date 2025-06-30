@@ -1,5 +1,3 @@
-import { ReactNode } from 'react';
-
 import {
     Bookmarks as BookmarksIcon,
     Dns as DnsIcon,
@@ -27,17 +25,12 @@ import {
     SiWordpress,
 } from '@icons-pack/react-simple-icons';
 
-type ShortCutsType = Array<Array<{
-    text: string;
-    icon?: ReactNode | string;
-    link: string;
-    color?: string;
-}>>
+import ShortCutsType from './ShortCutsType';
 
 const ShortCuts: ShortCutsType = [
     [
         { text: 'Google', icon: '/newtab/google.png', link: 'https://www.google.com/ncr', color: '#4285F4' },
-        { text: 'Baidu', icon: <SiBaidu />, link: 'https://www.baidu.com', color: '#2932e1' },
+        { text: 'Baidu', icon: <SiBaidu />, link: 'https://www.baidu.com', color: '#2932E1' },
         { text: 'Translate', icon: '/newtab/translate.webp', link: 'https://translate.google.com', color: '#4285F4' },
         { text: 'WebStore', icon: '/newtab/webstore.png', link: 'https://chromewebstore.google.com', color: '#4285F4' },
         { text: 'Apple US', icon: <SiApple />, link: 'https://www.apple.com', color: '#000000' },
@@ -59,11 +52,11 @@ const ShortCuts: ShortCutsType = [
     [
         { text: 'DESMG', link: 'https://www.desmg.com' },
         { text: 'Blog', icon: <SiWordpress />, link: 'https://blog.desmg.com', color: '#21759B' },
-        { text: 'Files', icon: <FolderIcon />, link: 'https://local.desmg.com/files/', color: '#607d8b' },
-        { text: 'SDWAN', icon: <LanIcon />, link: 'https://zt.desmg.com', color: '#388e3c' },
-        { text: 'DNS', icon: <DnsIcon />, link: 'https://dns.desmg.com', color: '#512da8' },
-        { text: 'Status', icon: <SpeedIcon />, link: 'https://status.desmg.com', color: '#0288d1' },
-        { text: 'Registry', icon: <SiPodman />, link: 'https://joxit.dev/docker-registry-ui/demo/', color: '#892ca0' },
+        { text: 'Files', icon: <FolderIcon />, link: 'https://local.desmg.com/files/', color: '#607D8B' },
+        { text: 'SDWAN', icon: <LanIcon />, link: 'https://zt.desmg.com', color: '#388E3C' },
+        { text: 'DNS', icon: <DnsIcon />, link: 'https://dns.desmg.com', color: '#512DA8' },
+        { text: 'Status', icon: <SpeedIcon />, link: 'https://status.desmg.com', color: '#0288D1' },
+        { text: 'Registry', icon: <SiPodman />, link: 'https://joxit.dev/docker-registry-ui/demo/', color: '#892CA0' },
     ],
 ];
 
@@ -75,8 +68,11 @@ if (window.location.href.startsWith('chrome-extension://')) {
         { text: 'Bookmark', icon: <BookmarksIcon />, link: 'chrome://bookmarks' },
         { text: 'Extensions', icon: <ExtensionIcon />, link: 'chrome://extensions/' },
         { text: 'Settings', icon: <SettingsIcon />, link: 'chrome://settings' },
-    ].forEach((item) => ShortCuts[ShortCuts.length - 2].push(item));
+    ].forEach(item => ShortCuts[ShortCuts.length - 2].push(item));
 }
+
+import PrivateShortCuts from './PrivateShortCuts';
+PrivateShortCuts.forEach(item => ShortCuts.push(item));
 
 export {
     ShortCuts
