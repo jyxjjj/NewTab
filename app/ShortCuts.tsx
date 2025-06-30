@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 import {
     Bookmarks as BookmarksIcon,
     Dns as DnsIcon,
@@ -19,43 +21,49 @@ import {
     SiDigitalocean,
     SiFedora,
     SiGithub,
-    SiGoogle,
-    SiGooglechrome,
-    SiGoogletranslate,
     SiMaterialdesignicons,
     SiMui,
     SiPodman,
     SiWordpress,
 } from '@icons-pack/react-simple-icons';
 
-const ShortCuts = [
+type ShortCutsType = Array<Array<{
+    text: string;
+    icon?: ReactNode | string;
+    link: string;
+    color?: string;
+}>>
+
+const ShortCuts: ShortCutsType = [
     [
-        { text: 'Google', icon: <SiGoogle />, link: 'https://www.google.com/ncr' },
-        { text: 'Baidu', icon: <SiBaidu />, link: 'https://www.baidu.com' },
-        { text: 'Translate', icon: <SiGoogletranslate />, link: 'https://translate.google.com' },
-        { text: 'WebStore', icon: <SiGooglechrome />, link: 'https://chromewebstore.google.com' },
-        { text: 'Apple US', icon: <SiApple />, link: 'https://www.apple.com' },
-        { text: 'Apple CN', icon: <SiApple style={{ transform: 'scaleX(-1) scaleY(-1)' }} />, link: 'https://www.apple.com.cn' },
+        { text: 'Google', icon: '/newtab/google.png', link: 'https://www.google.com/ncr', color: '#4285F4' },
+        { text: 'Baidu', icon: <SiBaidu />, link: 'https://www.baidu.com', color: '#2932e1' },
+        { text: 'Translate', icon: '/newtab/translate.webp', link: 'https://translate.google.com', color: '#4285F4' },
+        { text: 'WebStore', icon: '/newtab/webstore.png', link: 'https://chromewebstore.google.com', color: '#4285F4' },
+        { text: 'Apple US', icon: <SiApple />, link: 'https://www.apple.com', color: '#000000' },
+        { text: 'Apple HK', icon: <SiApple />, link: 'https://www.apple.com', color: '#000000' },
+        { text: 'Apple EU', icon: <SiApple />, link: 'https://www.apple.com', color: '#000000' },
+        { text: 'Apple CN', icon: <SiApple style={{ transform: 'scaleX(-1) scaleY(-1)' }} />, link: 'https://www.apple.com.cn', color: '#000000' },
     ],
     [
-        { text: 'Cloudflare', icon: <SiCloudflare />, link: 'https://dash.cloudflare.com' },
-        { text: 'Digital Ocean', icon: <SiDigitalocean />, link: 'https://www.digitalocean.com' },
-        { text: 'AliYun', icon: <SiAlibabacloud />, link: 'https://www.aliyun.com' },
-        { text: 'Fedora', icon: <SiFedora />, link: 'https://fedoraproject.org' },
-        { text: 'GitHub', icon: <SiGithub />, link: 'https://github.com/jyxjjj/' },
-        { text: 'MUI', icon: <SiMui />, link: 'https://mui.com/material-ui/all-components/' },
-        { text: 'Material Icons', icon: <SiMaterialdesignicons />, link: 'https://fonts.google.com/icons?icon.set=Material+Icons' }
+        { text: 'Cloudflare', icon: <SiCloudflare />, link: 'https://dash.cloudflare.com', color: '#F38020' },
+        { text: 'Digital Ocean', icon: <SiDigitalocean />, link: 'https://www.digitalocean.com', color: '#0080FF' },
+        { text: 'AliYun', icon: <SiAlibabacloud />, link: 'https://www.aliyun.com', color: '#FF6A00' },
+        { text: 'Fedora', icon: <SiFedora />, link: 'https://fedoraproject.org', color: '#294172' },
+        { text: 'GitHub', icon: <SiGithub />, link: 'https://github.com/', color: '#181717' },
+        { text: 'MUI', icon: <SiMui />, link: 'https://mui.com/material-ui/all-components/', color: '#007FFF' },
+        { text: 'Material Icons', icon: <SiMaterialdesignicons />, link: 'https://fonts.google.com/icons?icon.set=Material+Icons', color: '#2196F3' }
     ],
     [
     ],
     [
-        { text: 'DESMG', icon: null, link: 'https://www.desmg.com' },
-        { text: 'Blog', icon: <SiWordpress />, link: 'https://blog.desmg.com' },
-        { text: 'Files', icon: <FolderIcon />, link: 'https://local.desmg.com/files/' },
-        { text: 'SDWAN', icon: <LanIcon />, link: 'https://zt.desmg.com' },
-        { text: 'DNS', icon: <DnsIcon />, link: 'https://dns.desmg.com' },
-        { text: 'Status', icon: <SpeedIcon />, link: 'https://status.desmg.com' },
-        { text: 'Registry', icon: <SiPodman />, link: 'https://joxit.dev/docker-registry-ui/demo/' },
+        { text: 'DESMG', link: 'https://www.desmg.com' },
+        { text: 'Blog', icon: <SiWordpress />, link: 'https://blog.desmg.com', color: '#21759B' },
+        { text: 'Files', icon: <FolderIcon />, link: 'https://local.desmg.com/files/', color: '#607d8b' },
+        { text: 'SDWAN', icon: <LanIcon />, link: 'https://zt.desmg.com', color: '#388e3c' },
+        { text: 'DNS', icon: <DnsIcon />, link: 'https://dns.desmg.com', color: '#512da8' },
+        { text: 'Status', icon: <SpeedIcon />, link: 'https://status.desmg.com', color: '#0288d1' },
+        { text: 'Registry', icon: <SiPodman />, link: 'https://joxit.dev/docker-registry-ui/demo/', color: '#892ca0' },
     ],
 ];
 
