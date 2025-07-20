@@ -56,7 +56,7 @@ const ShortCuts: ShortCutsType = [
         { text: 'SDWAN', icon: <LanIcon />, link: 'https://zt.desmg.com', color: '#388E3C' },
         { text: 'DNS', icon: <DnsIcon />, link: 'https://dns.desmg.com', color: '#512DA8' },
         { text: 'Status', icon: <SpeedIcon />, link: 'https://status.desmg.com', color: '#0288D1' },
-        { text: 'Registry', icon: <SiPodman />, link: 'https://joxit.dev/docker-registry-ui/demo/', color: '#892CA0' },
+        { text: 'Registry', icon: <SiPodman />, link: 'https://registry.desmg.com', color: '#892CA0' },
     ],
 ];
 
