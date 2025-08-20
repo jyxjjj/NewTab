@@ -19,6 +19,7 @@ import {
     SiDigitalocean,
     SiFedora,
     SiGithub,
+    SiLaravel,
     SiMaterialdesignicons,
     SiMui,
     SiPodman,
@@ -45,7 +46,8 @@ const ShortCuts: ShortCutsType = [
         { text: 'Fedora', icon: <SiFedora />, link: 'https://fedoraproject.org', color: '#294172' },
         { text: 'GitHub', icon: <SiGithub />, link: 'https://github.com/', color: '#181717' },
         { text: 'MUI', icon: <SiMui />, link: 'https://mui.com/material-ui/all-components/', color: '#007FFF' },
-        { text: 'Material Icons', icon: <SiMaterialdesignicons />, link: 'https://fonts.google.com/icons?icon.set=Material+Icons', color: '#2196F3' }
+        { text: 'Material Icons', icon: <SiMaterialdesignicons />, link: 'https://fonts.google.com/icons?icon.set=Material+Icons', color: '#2196F3' },
+        { text: 'Laravel', icon: <SiLaravel />, link: 'https://laravel.com/docs/12.x', color: '#FF2D20' },
     ],
     [
     ],
