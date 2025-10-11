@@ -1,4 +1,4 @@
-import { ReactNode, useMemo } from 'react';
+import { ReactNode } from 'react';
 
 import { Stack, StackProps } from '@mui/material';
 
@@ -13,28 +13,19 @@ export default function ItemContainer(
     } & StackProps
 ) {
 
-    const obj = useMemo(() => {
-        const isDESMG = (() => {
-            try {
-                return new URL(href).hostname.endsWith('.desmg.com');
-            } catch {
-                return false;
-            }
-        })();
-        const isChromeURL = href.startsWith('chrome://');
-        if (isDESMG) {
-            return { href };
-        } else if (isChromeURL) {
-            return {
-                onClick: () => chrome.tabs.update({ url: href }),
-            };
-        } else {
-            return {
-                href: href,
-                rel: 'external noopener noreferrer nofollow',
-            };
+    const isDESMG = (() => {
+        try {
+            return new URL(href).hostname.endsWith('.desmg.com');
+        } catch {
+            return false;
         }
-    }, [href]);
+    })();
+    const isChromeURL = href.startsWith('chrome://');
+    const obj = isDESMG
+        ? { href }
+        : isChromeURL
+            ? { onClick: () => chrome.tabs.update({ url: href }) }
+            : { href: href, rel: 'external noopener noreferrer nofollow' };
 
     return (
         <Stack
