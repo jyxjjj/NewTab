@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useMemo } from 'react';
 
 import { Stack, StackProps } from '@mui/material';
 
@@ -13,32 +13,26 @@ export default function ItemContainer(
     } & StackProps
 ) {
 
-    const [obj, setObj] = useState<{
-        href?: string;
-        onClick?: React.MouseEventHandler;
-        rel?: string;
-    }>({});
-
-    useEffect(() => {
-        const isDESMG = ((href) => {
+    const obj = useMemo(() => {
+        const isDESMG = (() => {
             try {
                 return new URL(href).hostname.endsWith('.desmg.com');
             } catch {
                 return false;
             }
-        })(href);
+        })();
         const isChromeURL = href.startsWith('chrome://');
         if (isDESMG) {
-            setObj({ href });
+            return { href };
         } else if (isChromeURL) {
-            setObj({
+            return {
                 onClick: () => chrome.tabs.update({ url: href }),
-            });
+            };
         } else {
-            setObj({
+            return {
                 href: href,
                 rel: 'external noopener noreferrer nofollow',
-            });
+            };
         }
     }, [href]);
 
