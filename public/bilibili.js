@@ -15,10 +15,10 @@
             createDataChannel() { }
         }
         class _RTCDataChannel { }
-        Object.defineProperty(unsafeWindow, 'RTCPeerConnection', { value: _RTCPeerConnection, enumerable: false, writable: false });
-        Object.defineProperty(unsafeWindow, 'RTCDataChannel', { value: _RTCDataChannel, enumerable: false, writable: false });
-        Object.defineProperty(unsafeWindow, 'webkitRTCPeerConnection', { value: _RTCPeerConnection, enumerable: false, writable: false });
-        Object.defineProperty(unsafeWindow, 'webkitRTCDataChannel', { value: _RTCDataChannel, enumerable: false, writable: false });
+        Object.defineProperty(window, 'RTCPeerConnection', { value: _RTCPeerConnection, enumerable: false, writable: false });
+        Object.defineProperty(window, 'RTCDataChannel', { value: _RTCDataChannel, enumerable: false, writable: false });
+        Object.defineProperty(window, 'webkitRTCPeerConnection', { value: _RTCPeerConnection, enumerable: false, writable: false });
+        Object.defineProperty(window, 'webkitRTCDataChannel', { value: _RTCDataChannel, enumerable: false, writable: false });
     } catch (e) { }
     // 去掉垃圾华为字体就是不爱国
     Array.from(document.querySelectorAll('link[href*="/jinkela/long/font/"]')).forEach(x => x.remove());
@@ -73,9 +73,9 @@
         window.__INITIAL_STATE__.elecFullInfo.list = [];
     }
     // 去除 P2P CDN
-    Object.defineProperty(unsafeWindow, 'PCDNLoader', { value: class { }, enumerable: false, writable: false });
-    Object.defineProperty(unsafeWindow, 'BPP2PSDK', { value: class { on() { } }, enumerable: false, writable: false });
-    Object.defineProperty(unsafeWindow, 'SeederSDK', { value: class { }, enumerable: false, writable: false });
+    Object.defineProperty(window, 'PCDNLoader', { value: class { }, enumerable: false, writable: false });
+    Object.defineProperty(window, 'BPP2PSDK', { value: class { on() { } }, enumerable: false, writable: false });
+    Object.defineProperty(window, 'SeederSDK', { value: class { }, enumerable: false, writable: false });
     // 允许复制文章内容
     document.querySelectorAll('div#article-content').forEach((item) => {
         item.addEventListener(
