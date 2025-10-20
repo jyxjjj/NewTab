@@ -21,9 +21,19 @@ Load the `dist` folder as an unpacked extension.
 
 ## Functions
 
-### Bilibili Copy
+### Bilibili
 
-Removes copy restrictions on Bilibili articles.
+- Remove the grey effect of the entire site when the uncle Chen died.
+
+- Remove uncle Chen's Tears when Blocking Ads.
+
+- Remove WebRTC (Testing) (Preventing uncle Chen from refusing to pay for the coffin for himself and his parents).
+
+- Remove P2P (Testing).
+
+- Removes copy restrictions on Bilibili articles.
+
+- Other multiple optimizations.
 
 ### JumpServer Watermark Removal
 
