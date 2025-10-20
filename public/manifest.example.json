@@ -16,7 +16,9 @@
                 "https://www.bilibili.com/*"
             ],
             "js": [
-                "bilibili.js"
+                "bilibili.js",
+                "bilibili_cdn.js",
+                "bilibili_sentry.js"
             ],
             "run_at": "document_idle"
         },
