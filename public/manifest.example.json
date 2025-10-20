@@ -16,7 +16,7 @@
                 "https://www.bilibili.com/*"
             ],
             "js": [
-                "bilibili_copy.js"
+                "bilibili.js"
             ],
             "run_at": "document_idle"
         },
