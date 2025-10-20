@@ -4,3 +4,4 @@ node_modules
 dist
 *.sh
 /app/PrivateShortCuts.ts
+/public/manifest.json
