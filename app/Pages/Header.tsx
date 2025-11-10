@@ -55,10 +55,11 @@ export default function Header({ inputRef }: HeaderProps) {
 
     function handleSearch() {
         const value = inputRef?.current?.value ?? '';
-        window.location.href =
+        window.location.assign(
             searchEngine === 'google'
                 ? 'https://www.google.com/search?q=' + encodeURIComponent(value)
-                : 'https://www.baidu.com/s?wd=' + encodeURIComponent(value);
+                : 'https://www.baidu.com/s?wd=' + encodeURIComponent(value)
+        );
     }
 
     function suggest(kw: string) {
@@ -108,9 +109,8 @@ export default function Header({ inputRef }: HeaderProps) {
     }
 
     function handleChooseSuggestion(suggestion: string) {
-        const input = inputRef?.current;
-        if (input) {
-            input.value = suggestion;
+        if (inputRef?.current) {
+            inputRef.current.value = suggestion;
         }
         handleSearch();
     }
