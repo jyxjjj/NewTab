@@ -13,8 +13,8 @@ export default function Main() {
     return (
         <Stack
             component='main'
-            paddingY={4}
             sx={{
+                paddingY: 4,
                 userSelect: 'none',
                 [theme.breakpoints.up('sm')]: {
                     width: '65vw',
@@ -27,9 +27,11 @@ export default function Main() {
                         key={index1}
                         spacing={1}
                         direction='row'
-                        flexWrap='wrap'
-                        alignItems='center'
-                        justifyContent='center'
+                        sx={{
+                            flexWrap: 'wrap',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                        }}
                     >
                         {
                             items.map((item, index2) => (

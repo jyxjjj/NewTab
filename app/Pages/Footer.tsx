@@ -5,8 +5,10 @@ export default function Footer() {
         <Stack
             component='footer'
             direction='column'
-            alignItems='center'
-            paddingY={4}
+            sx={{
+                alignItems: 'center',
+                paddingY: 4,
+            }}
         >
             <Stack
                 direction='row'
