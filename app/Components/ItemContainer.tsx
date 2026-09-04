@@ -32,12 +32,12 @@ export default function ItemContainer(
             component='a'
             {...obj}
             direction='column'
-            alignItems='center'
-            justifyContent='center'
-            color='inherit'
             {...props}
             sx={[
                 theme => ({
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'inherit',
                     height: 96,
                     width: 96,
                     minHeight: 96,
