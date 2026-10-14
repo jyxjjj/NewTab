@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "requestDomains": ["127.0.0.1", "localhost"],
+            "resourceTypes": [
+                "main_frame", "sub_frame", "stylesheet", "script", "image",
+                "font", "object", "xmlhttprequest", "ping", "csp_report",
+                "media", "websocket", "webtransport", "webbundle", "other"
+            ]
+        }
+    },
+    {
+        "id": 2,
+        "priority": 2,
+        "action": {
+            "type": "allow"
+        },
+        "condition": {
+            "regexFilter": "^(https?|wss?)://([^/@]*@)?(127\\.0\\.0\\.1|localhost):(1080|1081|3000|3001|4173|5173|7890|7891|7892|8080|8081|8888|9000|9501)/",
+            "resourceTypes": [
+                "main_frame", "sub_frame", "stylesheet", "script", "image",
+                "font", "object", "xmlhttprequest", "ping", "csp_report",
+                "media", "websocket", "webtransport", "webbundle", "other"
+            ]
+        }
+    },
+    {
+        "id": 3,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "regexFilter": "^(https?|wss?)://([^/@]*@)?localhost\\.weixin\\.qq\\.com\\.?(:[0-9]+)?/",
+            "resourceTypes": [
+                "main_frame", "sub_frame", "stylesheet", "script", "image",
+                "font", "object", "xmlhttprequest", "ping", "csp_report",
+                "media", "websocket", "webtransport", "webbundle", "other"
+            ]
+        }
+    }
+]
