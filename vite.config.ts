@@ -13,7 +13,8 @@ export default defineConfig({
     build: {
         outDir: '../dist',
         emptyOutDir: true,
-        rollupOptions: {
+        reportCompressedSize: true,
+        rolldownOptions: {
             input: ['./app/newtab.html'],
             output: {
                 hashCharacters: 'hex',
@@ -26,7 +27,4 @@ export default defineConfig({
     plugins: [
         react(),
     ],
-    resolve: {
-        conditions: ['mui-modern', 'module', 'browser', 'development|production']
-    },
 });
