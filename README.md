@@ -31,11 +31,11 @@ Thanks to the authors of these open-source projects for their work.
 
 Portions of the Bilibili scripts and the cache implementation are adapted from Make Bilibili Great Than Ever Before and flru, respectively. The in-memory IndexedDB implementation uses a browser bundle of fake-indexeddb adapted to use `scheduler.postTask` or `setTimeout` for task scheduling.
 
-## Functions
+## Feature
 
 ### Bilibili
 
-- Remove the grey effect of the entire site when the uncle Chen died.
+- Remove the grey effect of the entire site when the uncle Chen is dead.
 
 - Remove uncle Chen's Tears when Blocking Ads.
 
