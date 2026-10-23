@@ -4,6 +4,8 @@
     "manifest_version": 3,
     "description": "New Tab",
     "permissions": [
+        "storage",
+        "unlimitedStorage",
         "declarativeNetRequest"
     ],
     "declarative_net_request": {

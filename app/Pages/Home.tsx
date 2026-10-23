@@ -1,8 +1,7 @@
-import { useCallback, useDeferredValue, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-import { Stack } from '@mui/material';
+import { Link, Stack } from '@mui/material';
 
-import SearchButton from '../Components/SearchButton';
 import ChangeThemeButton from '../Components/ChangeThemeButton';
 import Footer from './Footer';
 import Header from './Header';
@@ -11,50 +10,32 @@ import Main from './Main';
 export default function Home() {
 
     const inputRef = useRef<HTMLInputElement | null>(null);
-    const [show, setShow] = useState(false);
-    const deferredShow = useDeferredValue(show);
-
-    function handleClick(e: React.MouseEvent<HTMLDivElement>) {
-        if (e.target === e.currentTarget) {
-            setShow(false);
+    const [editing, setEditing] = useState(false)
+    useEffect(() => {
+        function focusSearch(e: KeyboardEvent) {
+            if (e.defaultPrevented || document.querySelector('[role="dialog"], [role="menu"]')) {
+                return
+            }
+            if (e.key === 'f' && (e.ctrlKey || e.metaKey)) {
+                inputRef.current?.focus()
+                e.preventDefault()
+            }
         }
-    }
-
-    const handleSpotlight = useCallback((e: KeyboardEvent) => {
-        if ((e.key === 'f' && (e.ctrlKey || e.metaKey)) || e.key === '/') {
-            setShow(true);
-            e.preventDefault();
-        }
-        if (e.key === 'Escape') {
-            setShow(false);
-            e.preventDefault();
+        window.addEventListener('keydown', focusSearch)
+        return () => {
+            window.removeEventListener('keydown', focusSearch)
         }
     }, []);
 
-    useEffect(() => {
-        window.addEventListener('keydown', handleSpotlight);
-        return () => {
-            window.removeEventListener('keydown', handleSpotlight);
-        };
-    }, [handleSpotlight]);
-
     return (
         <Stack
-            onClick={handleClick}
             sx={{
                 alignItems: 'center',
-                justifyContent: 'center',
-                minHeight: '100%',
+                justifyContent: 'flex-start',
+                minHeight: '100dvh',
                 padding: '2rem',
+                paddingBottom: 2,
             }}>
-            <SearchButton
-                setShow={setShow}
-                sx={{
-                    position: 'fixed',
-                    top: 0,
-                    left: 0,
-                }}
-            />
             <ChangeThemeButton
                 sx={{
                     position: 'fixed',
@@ -62,8 +43,19 @@ export default function Home() {
                     right: 0,
                 }}
             />
-            {deferredShow && <Header inputRef={inputRef} />}
-            <Main />
+            <Header inputRef={inputRef} />
+            <Main editing={editing} />
+            <Link
+                component='button'
+                type='button'
+                color='inherit'
+                underline='hover'
+                aria-pressed={editing}
+                onClick={() => setEditing(!editing)}
+                sx={{ flexShrink: 0, marginTop: 'auto' }}
+            >
+                {editing ? '结束编辑' : '编辑快捷方式'}
+            </Link>
             <Footer />
         </Stack>
     );

@@ -7,13 +7,14 @@
 
 html, body, root {
     margin: 0 auto 0 auto;
-    min-width: 100dvw;
-    max-width: 100dvw;
-    width: 100dvw;
-    height: 100dvh;
+    min-width: 100%;
+    max-width: 100%;
+    width: 100%;
     min-height: 100dvh;
-    max-height: 100dvh;
-    overflow: hidden;
+}
+
+root {
+    display: block;
 }
 
 html.dark>body {

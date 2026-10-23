@@ -27,6 +27,7 @@ export default function Header({ inputRef }: HeaderProps) {
 
     const [searchEngine, setSearchEngine] = useState<'google' | 'baidu'>('google');
     const [suggestions, setSuggestions] = useState<string[]>([]);
+    const [focused, setFocused] = useState(false)
     const abortControllerRef = useRef<AbortController | null>(null);
 
     function setKeyword(e: ChangeEvent<HTMLInputElement>) {
@@ -43,6 +44,11 @@ export default function Header({ inputRef }: HeaderProps) {
                 changeEngine();
                 e.preventDefault();
                 break;
+            case 'Escape':
+                abortControllerRef.current?.abort()
+                setSuggestions([])
+                e.preventDefault()
+                break
             default:
                 break;
         }
@@ -68,6 +74,7 @@ export default function Header({ inputRef }: HeaderProps) {
         }
         kw = kw.trim();
         if (kw.length === 0) {
+            setSuggestions([])
             return;
         }
         if (kw.length > 32) {
@@ -124,9 +131,9 @@ export default function Header({ inputRef }: HeaderProps) {
                 [theme.breakpoints.up('sm')]: {
                     width: '65vw',
                 },
-                position: 'fixed',
-                top: '4rem',
-                zIndex: theme.zIndex.tooltip,
+                position: 'relative',
+                flexShrink: 0,
+                zIndex: theme.zIndex.appBar,
             }}
         >
             <Paper
@@ -154,6 +161,8 @@ export default function Header({ inputRef }: HeaderProps) {
                         sx={{ ml: 1, flex: 1 }}
                         onChange={setKeyword}
                         onKeyDown={handleKey}
+                        onFocus={() => setFocused(true)}
+                        onBlur={() => setFocused(false)}
                         placeholder='Search'
                         autoFocus
                     />
@@ -161,8 +170,18 @@ export default function Header({ inputRef }: HeaderProps) {
                         <SearchIcon />
                     </IconButton>
                 </Stack>
-                {suggestions.length > 0 && (
-                    <Stack>
+                {focused && suggestions.length > 0 && (
+                    <Stack
+                        onMouseDown={e => e.preventDefault()}
+                        sx={{
+                            position: 'absolute',
+                            top: '100%',
+                            left: 0,
+                            width: '100%',
+                            backgroundColor: 'background.paper',
+                            boxShadow: theme.shadows[8],
+                        }}
+                    >
                         {suggestions.map((suggestion, index) => (
                             <Paper
                                 key={index}

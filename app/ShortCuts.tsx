@@ -1,14 +1,10 @@
 import {
     Bookmarks as BookmarksIcon,
-    Dns as DnsIcon,
     Extension as ExtensionIcon,
     FileDownload as FileDownloadIcon,
-    Folder as FolderIcon,
     History as HistoryIcon,
     Key as KeyIcon,
-    Lan as LanIcon,
     Settings as SettingsIcon,
-    Speed as SpeedIcon,
 } from '@mui/icons-material';
 
 import {
@@ -22,11 +18,9 @@ import {
     SiLaravel,
     SiMaterialdesignicons,
     SiMui,
-    SiPodman,
-    SiWordpress,
 } from '@icons-pack/react-simple-icons';
 
-import ShortCutsType from './ShortCutsType';
+import ShortCutsType, { SavedShortCutsType } from './ShortCutsType';
 
 const ShortCuts: ShortCutsType = [
     [
@@ -51,16 +45,19 @@ const ShortCuts: ShortCutsType = [
     ],
     [
     ],
+];
+
+const DefaultShortCuts: SavedShortCutsType = [
     [
         { text: 'DESMG', link: 'https://www.desmg.com' },
-        { text: 'Blog', icon: <SiWordpress />, link: 'https://blog.desmg.com', color: '#21759B' },
-        { text: 'Files', icon: <FolderIcon />, link: 'https://local.desmg.com/files/', color: '#607D8B' },
-        { text: 'SDWAN', icon: <LanIcon />, link: 'https://zt.desmg.com', color: '#388E3C' },
-        { text: 'DNS', icon: <DnsIcon />, link: 'https://dns.desmg.com', color: '#512DA8' },
-        { text: 'Status', icon: <SpeedIcon />, link: 'https://status.desmg.com', color: '#0288D1' },
-        { text: 'Registry', icon: <SiPodman />, link: 'https://registry.desmg.com', color: '#892CA0' },
+        { text: 'Blog', icon: 'SiWordpress', link: 'https://blog.desmg.com', color: '#21759B' },
+        { text: 'Files', icon: 'Folder', link: 'https://local.desmg.com/files/', color: '#607D8B' },
+        { text: 'SDWAN', icon: 'Lan', link: 'https://zt.desmg.com', color: '#388E3C' },
+        { text: 'DNS', icon: 'Dns', link: 'https://dns.desmg.com', color: '#512DA8' },
+        { text: 'Status', icon: 'Speed', link: 'https://status.desmg.com', color: '#0288D1' },
+        { text: 'Registry', icon: 'SiPodman', link: 'https://registry.desmg.com', color: '#892CA0' },
     ],
-];
+]
 
 if (window.location.href.startsWith('chrome-extension://')) {
     [
@@ -70,12 +67,10 @@ if (window.location.href.startsWith('chrome-extension://')) {
         { text: 'Bookmark', icon: <BookmarksIcon />, link: 'chrome://bookmarks' },
         { text: 'Extensions', icon: <ExtensionIcon />, link: 'chrome://extensions/' },
         { text: 'Settings', icon: <SettingsIcon />, link: 'chrome://settings' },
-    ].forEach(item => ShortCuts[ShortCuts.length - 2].push(item));
+    ].forEach(item => ShortCuts[ShortCuts.length - 1].push(item));
 }
 
-import PrivateShortCuts from './PrivateShortCuts';
-PrivateShortCuts.forEach(item => ShortCuts.push(item));
-
 export {
-    ShortCuts
+    ShortCuts,
+    DefaultShortCuts,
 };
