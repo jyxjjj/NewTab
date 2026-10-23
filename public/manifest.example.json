@@ -44,16 +44,6 @@
                 "jumpserver.js"
             ],
             "run_at": "document_idle"
-        },
-        {
-            "matches": [
-                "https://chat.openai.com/*",
-                "https://chatgpt.com/*"
-            ],
-            "js": [
-                "chatgpt.js"
-            ],
-            "run_at": "document_idle"
         }
     ]
 }

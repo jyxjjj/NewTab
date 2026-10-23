@@ -38,7 +38,3 @@ Load the `dist` folder as an unpacked extension.
 ### JumpServer Watermark Removal
 
 Removes watermarks JumpServer. You need to set the domain name in `manifest.json` according to your actual situation.
-
-### ChatGPT Width Adjustment
-
-Adjusts the width of the ChatGPT chat area to utilize the full width of the window.
