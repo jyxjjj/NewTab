@@ -21,11 +21,15 @@ Load the `dist` folder as an unpacked extension.
 
 ### Bilibili Script Attribution
 
-Portions of the Bilibili scripts are adapted from [Make Bilibili Great Than Ever Before](https://github.com/SukkaW/Make-Bilibili-Great-Than-Ever-Before) by [Sukka](https://github.com/SukkaW), licensed under the MIT License. See [Original LICENSE](https://github.com/SukkaW/Make-Bilibili-Great-Than-Ever-Before/blob/51046e5ef213884c8bc7e4da5920dd0199ee39a5/LICENSE).
+Thanks to the authors of these open-source projects for their work.
 
-The in-memory IndexedDB implementation uses [fake-indexeddb 6.2.6](https://github.com/dumbmatter/fakeIndexedDB/tree/e4b7e016cf218f429db4819b0ff9a04741f15a25) by [Jeremy Scheff](https://github.com/dumbmatter), licensed under Apache-2.0. See [Original LICENSE](https://github.com/dumbmatter/fakeIndexedDB/blob/e4b7e016cf218f429db4819b0ff9a04741f15a25/LICENSE). The browser bundle uses `scheduler.postTask` or `setTimeout` for task scheduling.
+| Repository | Author | Version | Commit Hash | License |
+| :---: | :---: | :---: | :---: | :---: |
+| [Make Bilibili Great Than Ever Before](https://github.com/SukkaW/Make-Bilibili-Great-Than-Ever-Before) | [Sukka](https://github.com/SukkaW) | 1.9.2 | [51046e5ef213884c8bc7e4da5920dd0199ee39a5](https://github.com/SukkaW/Make-Bilibili-Great-Than-Ever-Before/tree/51046e5ef213884c8bc7e4da5920dd0199ee39a5) | [MIT](https://github.com/SukkaW/Make-Bilibili-Great-Than-Ever-Before/blob/51046e5ef213884c8bc7e4da5920dd0199ee39a5/LICENSE) |
+| [fake-indexeddb](https://github.com/dumbmatter/fakeIndexedDB) | [Jeremy Scheff](https://github.com/dumbmatter) | 6.2.6 | [e4b7e016cf218f429db4819b0ff9a04741f15a25](https://github.com/dumbmatter/fakeIndexedDB/tree/e4b7e016cf218f429db4819b0ff9a04741f15a25) | [Apache-2.0](https://github.com/dumbmatter/fakeIndexedDB/blob/e4b7e016cf218f429db4819b0ff9a04741f15a25/LICENSE) |
+| [flru](https://github.com/lukeed/flru) | [Luke Edwards](https://github.com/lukeed) | 1.0.2 | [35d9a9aa9d29a6c6a2fb7948be04c1f6dddc3baf](https://github.com/lukeed/flru/tree/35d9a9aa9d29a6c6a2fb7948be04c1f6dddc3baf) | [MIT](https://github.com/lukeed/flru/blob/35d9a9aa9d29a6c6a2fb7948be04c1f6dddc3baf/license) |
 
-The cache implementation is adapted from [flru 1.0.2](https://github.com/lukeed/flru/tree/35d9a9aa9d29a6c6a2fb7948be04c1f6dddc3baf) by [Luke Edwards](https://github.com/lukeed), licensed under the MIT License. See [Original LICENSE](https://github.com/lukeed/flru/blob/35d9a9aa9d29a6c6a2fb7948be04c1f6dddc3baf/license).
+Portions of the Bilibili scripts and the cache implementation are adapted from Make Bilibili Great Than Ever Before and flru, respectively. The in-memory IndexedDB implementation uses a browser bundle of fake-indexeddb adapted to use `scheduler.postTask` or `setTimeout` for task scheduling.
 
 ## Functions
 
