@@ -187,7 +187,6 @@ export default function Main({ editing }: { editing: boolean }) {
                         buttons.push(
                             <ButtonBase
                                 key='add'
-                                aria-label='添加快捷方式'
                                 disableRipple
                                 disabled={!loaded || saving}
                                 onClick={() => {
@@ -339,13 +338,13 @@ export default function Main({ editing }: { editing: boolean }) {
                                     defaultValue={edit.item?.link ?? ''}
                                     disabled={saving}
                                 />
-                                <RadioGroup row aria-label='图标来源' value={iconType} onChange={e => setIconType(e.target.value)}>
+                                <RadioGroup row value={iconType} onChange={e => setIconType(e.target.value)}>
                                     <FormControlLabel value='favicon' control={<Radio disabled={saving} />} label='自动 Favicon' />
                                     <FormControlLabel value='builtin' control={<Radio disabled={saving} />} label='内置图标' />
                                     <FormControlLabel value='url' control={<Radio disabled={saving} />} label='图片 URL' />
                                 </RadioGroup>
                                 {iconType === 'favicon' && (
-                                    <RadioGroup row aria-label='Favicon 来源' value={favicon} onChange={e => setFavicon(e.target.value as 'default' | 'google')}>
+                                    <RadioGroup row value={favicon} onChange={e => setFavicon(e.target.value as 'default' | 'google')}>
                                         <FormControlLabel value='default' control={<Radio disabled={saving} />} label='/favicon.ico' />
                                         <FormControlLabel value='google' control={<Radio disabled={saving} />} label='Google Favicon' />
                                     </RadioGroup>
@@ -385,8 +384,6 @@ export default function Main({ editing }: { editing: boolean }) {
                                             {filteredIcons.slice(0, iconCount).map(name => (
                                                 <Tooltip key={name} title={name}>
                                                     <Button
-                                                        aria-label={name}
-                                                        aria-pressed={icon === name}
                                                         color='inherit'
                                                         variant={icon === name ? 'contained' : 'text'}
                                                         onClick={() => setIcon(name)}

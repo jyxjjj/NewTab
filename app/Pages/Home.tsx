@@ -34,6 +34,7 @@ export default function Home() {
                 justifyContent: 'flex-start',
                 minHeight: '100dvh',
                 padding: '2rem',
+                paddingTop: '4rem',
                 paddingBottom: 2,
             }}>
             <ChangeThemeButton
@@ -50,11 +51,10 @@ export default function Home() {
                 type='button'
                 color='inherit'
                 underline='hover'
-                aria-pressed={editing}
                 onClick={() => setEditing(!editing)}
                 sx={{ flexShrink: 0, marginTop: 'auto' }}
             >
-                {editing ? '结束编辑' : '编辑快捷方式'}
+                {editing ? 'Done Editing' : 'Edit Shortcuts'}
             </Link>
             <Footer />
         </Stack>
