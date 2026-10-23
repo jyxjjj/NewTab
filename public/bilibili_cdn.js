@@ -227,10 +227,7 @@
             if (isObject(obj.result.video_info) && isObject(obj.result.video_info.dash)) dash = obj.result.video_info.dash;
             else if (isObject(obj.result.dash)) dash = obj.result.dash;
         }
-        if (!dash) {
-            console.warn('Invalid Bilibili Playinfo data', { json: obj });
-            return;
-        }
+        if (!dash) return;
         const representations = [];
         for (const [kind, list] of [
             ['video', dash.video],
